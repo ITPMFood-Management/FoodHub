@@ -1,24 +1,40 @@
-const mongooes = require('mongoose');
+const mongooes = require("mongoose");
+const Schema = mongooes.Schema;
 
-const postSchema = new mongooes.Schema({
+const Food = new Schema({
+    Foodcode:{
+        type:String,
+       
+
+    },
     Foodname:{
         type:String,
-        requored:true
+        
 
      },
      Itemprice:{
-         type:String,
-         required:true
+         type:Number,
+        
      },
-     Foodcategory:{
+     Foodcatergory:{
          type:String,
-         required:true
+        
      },
      Foodstatus:{
         type:String,
-        required:true
-    }
+       
+    },
+    ExpDate:{
+      type:Date,
+       
+    },
+    MFDDate:{
+        type:Date,
+        
+    },
 
     });
 
-    module.exports = mongooes.model('foods',postSchema);
+    const newFood = mongooes.model("food",Food);
+
+    module.exports = newFood;

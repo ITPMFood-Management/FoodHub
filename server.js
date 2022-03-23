@@ -1,28 +1,32 @@
-const mongoose =require('mongoose');
-const express = require('express');
+const express  = require("express");
+const mongoose = require("mongoose");
+const cors     = require("cors");
+const dotenv   = require("dotenv");
 
-const app =express();
+dotenv.config();
 
+const URL = 'mongodb+srv://food:food@foodhub.snug7.mongodb.net/FoodHub1?retryWrites=true&w=majority';
 
+mongoose.connect(URL,{
 
-
-
-
-const PORT =8000;
-const DB_URL ='mongodb+srv://thisunfb:8433@foodhub.snug7.mongodb.net/Foodhub?retryWrites=true&w=majority'
-
-
-mongoose.connect(DB_URL,{
-    useNewUrlParser: true,
-            useUnifiedTopology: true,
-           
-})
-
-.then(()=>{
-    console.log('DB Connected');
-})
-.catch((err)=>console.log('DB connection ERROR',err));
-
-app.listen(PORT,()=>{
-    console.log(`App is running on ${PORT}`);
 });
+
+const connection = mongoose.connection;
+
+connection.once("open", () => {
+    console.log("MongoDB connection was successful");
+})
+
+const app = express();
+
+const PORT = process.env.PORT || 8070
+
+
+app.use(cors());
+app.use(express.json());
+
+app.listen(PORT, () => {
+    console.log(`Server is up and running on port number ${PORT}`)
+})
+
+app.use('/food',require('./BACKEND/routes/Food'))

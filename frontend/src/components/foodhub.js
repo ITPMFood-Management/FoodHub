@@ -16,11 +16,11 @@ function Foodhub() {
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>
 
-    <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Sign in/Register
+   <a href="/home"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Sign in/Register
      
     <ion-icon name="person-circle-outline"></ion-icon>
     
-    </button>
+    </button></a>
     <a href=""><div className="text-4xl mr-5 mt-2 hover:text-red-700 duration-500 "><ion-icon  name="cart-outline"></ion-icon></div>  </a>
   </div>
 </header>

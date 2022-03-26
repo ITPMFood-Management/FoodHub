@@ -1,23 +1,28 @@
 
 import * as React from "react";
 import { Routes, Route } from "react-router-dom";
+import Foodhub from "./components/foodhub";
+import Footer from "./footer";
 import Home from "./Home";
 
+import User from "./user";
 
 
-import NavBar from "./NavBar";
-import SideBar from "./SideBar";
 
 const App = () => {
     return (  
         <div className="App">
-      <NavBar/>
-     <SideBar/>
+      
       <Routes>
         
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Foodhub/>} />
+        <Route path="/user" element={<User/>} />
+      
+  
+       
  
       </Routes>
+      <Footer/>
     </div>
     );
 }

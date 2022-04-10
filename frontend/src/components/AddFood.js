@@ -92,7 +92,7 @@ return(
 </div>
 </div>
 <div className="custom-select">
-<label for="fcatergory">Food </label>
+<label for="fcatergory">Food catergory</label>
 
 <div class="relative">
 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">

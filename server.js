@@ -29,8 +29,4 @@ app.listen(PORT, () => {
     console.log(`Server is up and running on port number ${PORT}`)
 })
 
-
-app.use('/customer',require('./BACKEND/routes/customer'))
-
 app.use('/food',require('./BACKEND/routes/Food'))
-

@@ -18,12 +18,14 @@ return(
  <label for="fprice">Food Price</label>
  <input type="price" class="form-control" id="fprice" placeholder="Enter Food Price"/>
 </div>
-<div className="form-group">
+<div className="custom-select">
 <label for="fcatergory">Food catergory</label>
+ 
 <br></br>
-<div class="flex justify-center">
+<div class="flex justify-left">
   <div class="mb-3 xl:w-96">
-    <select class="form-select appearance-none
+    
+    <select class="form-select appearance-none 
       block
       w-full
       px-3
@@ -31,35 +33,40 @@ return(
       text-base
       font-normal
       text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
+      bg-white bg-clip-padding bg-no-repeat 
       border border-solid border-gray-300
       rounded
       transition
       ease-in-out
       m-0
+      
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
         <option selected>Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
+    
   </div>
 </div>
 </div>
-<div className="form-group">
+<div className="custom-select">
+
 <label for="fcatergory">Food status</label>
+
 <br></br>
-<div class="flex justify-center">
+<div class="flex justify-left">
   <div class="mb-3 xl:w-96">
-    <select class="form-select appearance-none
+    <select class="form-select appearance-none 
       block
-      w-full
+      w-800
+      left-6%
       px-3
       py-1.5
       text-base
       font-normal
       text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
+      bg-white bg-clip-padding bg-no-repeat 
       border border-solid border-gray-300
       rounded
       transition
@@ -74,7 +81,8 @@ return(
   </div>
 </div>
 </div> 
-<div className="form-group">
+<div className="custom-select">
+<label for="fcatergory">Food catergory</label>
 
 <div class="relative">
 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -83,7 +91,8 @@ return(
 <input datepicker type="date" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"/>
 </div>
 </div>
-<div className="form-group">
+<div className="custom-select">
+<label for="fcatergory">Food catergory</label>
 
 <div class="relative">
 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">

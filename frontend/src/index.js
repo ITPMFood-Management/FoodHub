@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Dashboard from './Dashboard';
 import './index.css';
 import NavBar from './NavBar';
+import App from './App';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -10,12 +11,18 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
   
-
+  
 
 <NavBar/>
 
+
+
 <Dashboard/>
-  </React.StrictMode>,
+<App/>
+
+
+
+</React.StrictMode>,
   document.getElementById('root')
 );
 

@@ -9,7 +9,7 @@ const Dashboard = () => {
         
             <div className="relative">
            
-           <img src={logo} className="absolute cursor-pointer rounded-full -right-3 top-9 w-7" />
+          <img src={logo} className="absolute cursor-pointer rounded-full -right-3 top-9 w-7" />
            </div>
             
 

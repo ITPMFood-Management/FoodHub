@@ -5,7 +5,7 @@ function Foodhub() {
   return (
     <><header class="text-gray-400  body-font  ">
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">
-    <a href="/" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+    <a href="/home" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
       <img src={Logo2} className="w-12" />
       <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
     </a>
@@ -16,7 +16,7 @@ function Foodhub() {
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>
 
-   <a href="/home"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Sign in/Register
+   <a href="/signin"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Sign in/Register
      
     <ion-icon name="person-circle-outline"></ion-icon>
     

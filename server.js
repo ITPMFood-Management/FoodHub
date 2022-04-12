@@ -36,4 +36,8 @@ app.use('/customer',require('./BACKEND/routes/customer'))
 
 app.use('/food',require('./BACKEND/routes/Food'))
 
+
 app.use('/delivery',delivery)
+
+app.use('/orders',require('./BACKEND/routes/order'))
+

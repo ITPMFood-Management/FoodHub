@@ -25,28 +25,28 @@ const fileFilter = (req, file, cb) => {
 let upload = multer({ storage, fileFilter });
 
 router.route('/add').post(upload.single('photo'), (req, res) => {
-    const chefid = req.body.chefid;
     const name = req.body.name;
+    const age = Number(req.body.age);
+    const gender = req.body.gender;
     const address = req.body.address;
-    const phone = req.body.phone;
+    const phone = Number(req.body.phone);
     const email = req.body.email;
-    const exp = req.body.exp;
     const photo = req.file.filename;
 
-    const newUserData = {
-        chefid,
+    const newCustomerData = {
         name,
+        age,
+        gender,
         address,
-        phone,
-        email,
-        exp,
-        photo
+        photo,
+        email, 
+        phone
     }
 
-    const newUser = new User(newUserData);
+    const newCustomer = new Customer(newCustomerData);
 
-    newUser.save()
-           .then(() => res.json('User Added'))
+    newCustomer.save()
+           .then(() => res.json('Customer Added'))
            .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -95,6 +95,21 @@ router.route("/delete/:id").delete(async (req , res)=>{  //delete data
     });
 });
 
+
+router.route("/user/:id").get(async (req , res)=>{  //get specific data
+    let CustomerID = req.params.id;
+
+    await Customer.findById(CustomerID)
+    .then(()=>{
+        res.status(200).send({status : "ok"});
+
+    }).catch((err)=>{
+        console.log(err);
+        res.status(500).send({status : "Error with deleting data" , error : err.message});
+    });
+});
+
+
 router.route("/get/:name").get(async (req , res)=>{  //search data
     let name = req.params.name; 
 
@@ -107,5 +122,8 @@ router.route("/get/:name").get(async (req , res)=>{  //search data
         res.status(500).send({status : "Error with fetching data" , error : err.message});
     });
 });
+
+
+
 
 module.exports = router;

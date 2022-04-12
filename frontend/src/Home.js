@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "./img/Logo.png"
+// import Logo from "./img/Logo.png"
 import { useState } from "react";
 
 const Home = () => {
@@ -53,7 +53,7 @@ const Home = () => {
                         <div class="flex flex-row items-center h-8">
 
                         </div>
-                        <div className="ml-2 "> <img src={Logo} alt="Logo" /></div>
+                        {/* <div className="ml-2 "> <img src={Logo} alt="Logo" /></div> */}
                     </li>
 
                     <li>

@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors     = require("cors");
 const dotenv   = require("dotenv");
 
+const delivery=require('./BACKEND/routes/delivery');
+
 dotenv.config();
 
 const URL = 'mongodb+srv://food:food@foodhub.snug7.mongodb.net/FoodHub1?retryWrites=true&w=majority';
@@ -33,4 +35,9 @@ app.listen(PORT, () => {
 app.use('/customer',require('./BACKEND/routes/customer'))
 
 app.use('/food',require('./BACKEND/routes/Food'))
+
+
+app.use('/delivery',delivery)
+
 app.use('/orders',require('./BACKEND/routes/order'))
+

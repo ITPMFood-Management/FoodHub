@@ -1,0 +1,34 @@
+.AddFoodContainer{
+    width: 600px;
+    height: 850px;
+    border-color: #2a90cf;
+    margin-left:34%;
+    margin-right:100%;
+    margin-top:15%;
+    border: 2px solid #2a90cf;
+    border-radius: 10px;
+    
+    
+
+}
+.form-group{
+    width:40%;
+    margin-left:15%;
+    margin-right:34%;
+    
+    border-color:#2a90cf;
+    border: #2a90cf;
+}
+
+
+  
+ 
+.custom-select{
+  width:40%;
+  margin-left:15%;
+  margin-right:34%;
+  border-color:#2a90cf;
+  border: #2a90cf;
+   
+   
+}

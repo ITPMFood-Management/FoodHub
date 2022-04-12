@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 import './AddFood.css';
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -64,6 +64,8 @@ const handleChange = (e) => {
 
 
 
+  
+
 
  
    
@@ -72,7 +74,7 @@ return(
  
 <div className="AddFoodContainer px-24 flex items-center">
  
-<form className="w-full max-w-lg">
+<form onSubmit={handleSubmit} className="w-full max-w-lg">
  <br></br>
  <br></br>
  <br></br> 
@@ -81,7 +83,7 @@ return(
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-fcode">
        FOOD CODE:
       </label>
-      <input  id="grid-fcode" type="text" name= "Foodcode" value={newUser.Foodcode} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Enter the Food Code"/>
+      <input type="text" id="grid-fcode"  name="Foodcode" value={newUser.Foodcode} onChange={handleChange}  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Enter the Food Code"/>
      
     </div>
   </div>
@@ -90,7 +92,7 @@ return(
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-fName">
        FOOD Name:
       </label>
-      <input   id="grid-fName" type="text" name="Foodname" value={newUser.Foodname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  placeholder="Enter the Food Name"/>
+      <input   id="grid-fName" type="text" name="Foodname" value={newUser.Foodname} onChange={handleChange} required pattern="[A-Za-z]+" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  placeholder="Enter the Food Name"/>
      
     </div>
   </div>
@@ -110,7 +112,7 @@ return(
       Food catergory:
       </label>
       <div className="relative">
-        <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-fcatergory">
+        <select id="grid-fcatergory" name="Itemprice" value={newUser.Foodcatergory} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
           <option>New Mexico</option>
           <option>Missouri</option>
           <option>Texas</option>
@@ -128,7 +130,7 @@ return(
       Food status:
       </label>
       <div className="relative">
-        <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+        <select  id="grid-fstatus" name="Foodstatus" value={newUser.Foodstatus} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
           <option>New Mexico</option>
           <option>Missouri</option>
           <option>Texas</option>
@@ -147,7 +149,7 @@ return(
   <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
     <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
   </div>
-  <input type="text" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Select date"/>
+  <input type="text" name=" ExpDate" value={newUser.ExpDate}  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Select date"/>
 </div>
 <br></br>
 <div className="relative">
@@ -157,7 +159,7 @@ return(
   <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
     <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
   </div>
-  <input type="text" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Select date"/>
+  <input type="text"  name="MFDDate" value={newUser.MFDDate}  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Select date"/>
 </div>
 
 <div className="md:flex md:items-center">

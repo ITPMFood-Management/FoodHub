@@ -2,13 +2,13 @@ const router = require("express").Router();
 const Order = require("../models/order")
 
 router.route("/create").post(async (req, res) => {
-    const { name, email, address } = req.body;
+    const { name,address } = req.body;
 
     const phoneNumber = Number(req.body.phoneNumber)
 
     const newOrder = new Order({
         name,
-        email,
+      
         address,
         phoneNumber
     })

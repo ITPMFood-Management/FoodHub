@@ -6,7 +6,7 @@ const Order = new Schema({
 
     address: String,
     phoneNumber: Number,
-    email: String,
+ 
   
 })
 

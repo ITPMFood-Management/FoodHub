@@ -33,4 +33,4 @@ app.listen(PORT, () => {
 app.use('/customer',require('./BACKEND/routes/customer'))
 
 app.use('/food',require('./BACKEND/routes/Food'))
-
+app.use('/orders',require('./BACKEND/routes/order'))

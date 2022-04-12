@@ -2,14 +2,16 @@ const router = require("express").Router();
 const Order = require("../models/order")
 
 router.route("/create").post(async (req, res) => {
-    const { name,address } = req.body;
+    const { customername,category,itemnumber,address } = req.body;
 
     const phoneNumber = Number(req.body.phoneNumber)
-
+    const quantity = Number(req.body.quantity)
     const newOrder = new Order({
-        name,
-      
+        customername,
+        category,
         address,
+        itemnumber,
+        quantity,
         phoneNumber
     })
 
@@ -34,7 +36,7 @@ router.route("/update/:id").put(async (req, res) => {
     const age = Number(req.body.age)
     const phoneNumber = Number(req.body.phoneNumber)
 
-    await Order.findByIdAndUpdate(id, { name, email, address, age, phoneNumber }).then(() => res.status(200).json({ success: true, message: "Successfully updated the delivery" }).catch(err => res.json(err)))
+    await Order.findByIdAndUpdate(id, { customername, category, address,    itemnumber, phoneNumber , quantity }).then(() => res.status(200).json({ success: true, message: "Successfully updated the delivery" }).catch(err => res.json(err)))
 })
 
 router.route("/delete/:id").delete(async (req, res) => {

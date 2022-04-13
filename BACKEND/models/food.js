@@ -4,7 +4,7 @@ const Schema = mongooes.Schema;
 const Food = new Schema({
     Foodcode:{
         type:String,
-        trim: true
+       
 
     },
     Foodname:{

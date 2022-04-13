@@ -38,7 +38,9 @@ const customerSchema = new Schema({
 
         unique:true,
     },
-
+    photo: {
+        type: String
+    },
     
 
 });

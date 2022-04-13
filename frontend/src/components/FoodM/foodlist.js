@@ -1,61 +1,89 @@
-import React,{useState} from "react"
-import { useState,useEffect } from 'react';
+import React,{useState, useEffect} from "react"
 import axios from 'axios';
 
 
 
 
-export default function foodlist(){
+export default function FoodList(){
+  const [listOfFood, setListOfFood] = useState([]);
 
-    const [listOfUsers, setListOfUsers] = useState([]);
-           
-    useEffect(() => {
-        axios.get("http://localhost:8070/food").then((response) => {
-          setListOfUsers(response.data);
-        });
-      }, []);
+  useEffect(() => {
+      axios.get("http://localhost:8070/foods").then((response) => {
+        setListOfFood(response.data);
+      });
+    }, []);
+
+   
     
 
 
 
-      return (
-        <div className="usersDisplay">
-         
+    return (
+    //   <table class="table-auto">
+    //   <thead>
+    //     <tr>
+    //       <th>Song</th>
+    //       <th>Artist</th>
+    //       <th>Year</th>
+    //     </tr>
+    //   </thead>
+    //   <tbody>
+    //     <tr>
+    //       <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+    //       <td>Malcolm Lockyer</td>
+    //       <td>1961</td>
+    //     </tr>
+    //     <tr>
+    //       <td>Witchy Woman</td>
+    //       <td>The Eagles</td>
+    //       <td>1972</td>
+    //     </tr>
+    //     <tr>
+    //       <td>Shining Star</td>
+    //       <td>Earth, Wind, and Fire</td>
+    //       <td>1975</td>
+    //     </tr>
+    //   </tbody>
+    // </table>
+
+<div></div>
+
+
+    //   <div className="usersDisplay">
        
-            <table>
-                  <thead>
-                    <tr>
-                      <th Scope="col">Num</th>
-                      <th Scope="col">Employee Name</th>
-                      <th Scope="col">Employee ID</th>
-                      <th Scope="col">Role</th>
-                      <th Scope="col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {listOfUsers.map((user) => (
-                    <tr>
-    
-                          <td>
-                              <a href={`/Editcustomer/${user._id}}`} style={{ color: 'black' }}>
-                              {user.name}
-                          </a>
-    
-                      </td><th scope="row">{user.age}</th><th scope="row">{user.address}</th>
-                        
-    
-    
-    
-                      </tr>
-                    ))}
-    
-    
-    
-                  </tbody>
-                </table>
-          );
+     
+    //    <table class="table-auto">
+    //    <thead>
+    //     <tr>
+    //          <th>Song</th>
+    //        <th>Artist</th>
+    //         <th>Year</th>
+    //         </tr>
+    //             </thead>
+    //             <tbody>
+    //             {listOfFood.map((food) => (
+    //               <tr>
+  
+    //                     <td>
+    //                         <a href={`/Editcustomer/${food._id}}`} style={{ color: 'black' }}>
+    //                         {food.Foodname}
+    //                     </a>
+  
+    //                 </td><th scope="row">{food.Itemprice}</th><th scope="row">{food.Foodstatus}</th>
+                      
+  
+  
+  
+    //                 </tr>
+    //               ))}
+  
+  
+  
+    //             </tbody>
+    //           </table>
         
-      </div>
-      )
-    }
+      
+    // </div>
+    )
+  }
     

@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 import './AddFood.css';
 import axios from "axios";
-/*import { ToastContainer, toast } from "react-toastify";*/
+import { ToastContainer, toast } from "react-toastify";
 
 
 

@@ -15,7 +15,7 @@ import Delivery from "./components/delivery/Adddelivery"
 import Assigndelivery from "./components/delivery/Assigndelivery"
 import Updatedelivery from "./components/delivery/Updatedelivery"
 import Viewdelivery from "./components/delivery/Viewdelivery"
-
+import FoodList from "./components/FoodM/foodlist";
 
 const App = () => {
     return (  
@@ -43,9 +43,8 @@ const App = () => {
 
         
         <Route path="/addfood"     element={<AddFood/>}/>
-
-       
- 
+        <Route path="/foodlist"   element={<FoodList/>}/>
+        
       
         </Routes>
         <br></br>

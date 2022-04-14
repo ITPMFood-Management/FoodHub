@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import Logo2 from "../../img/Logo-2.png"
@@ -11,6 +11,13 @@ const Addcustomer = () =>{
     
   const [loading, setLoading] = useState(false); //additional 
   const [isError, setIsError] = useState(false);
+  const [listOfUsers, setListOfUsers] = useState([]);
+
+    useEffect((id) => {
+        axios.get(`http://localhost:8070/customer/user/${id}`).then((response) => {
+          setListOfUsers(response.data);
+        });
+      }, []);
 
 
   const [newUser, setNewUser] = useState(
@@ -99,8 +106,11 @@ const getDataFromAPI = () => {
       <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>
+   <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div> 
 
-   <a href="/signin"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Sign in/Register
+  
+
+   <a href="/signin"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Log Out
      
     <ion-icon name="person-circle-outline"></ion-icon>
     

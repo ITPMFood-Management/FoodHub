@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+/*import React,{useEffect,useState} from "react";
 import axios from 'axios';
 import moment from 'moment';
 
@@ -73,4 +73,4 @@ const Viewdelivery = () => {
     )
       
     }
-  export default Viewdelivery;
+  export default Viewdelivery;*/

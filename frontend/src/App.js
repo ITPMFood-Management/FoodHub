@@ -16,6 +16,8 @@ import Assigndelivery from "./components/delivery/Assigndelivery"
 import Updatedelivery from "./components/delivery/Updatedelivery"
 import Viewdelivery from "./components/delivery/Viewdelivery"
 
+import AddOrder from "./components/orderM/addorder"
+
 
 const App = () => {
     return (  
@@ -41,7 +43,7 @@ const App = () => {
         <Route path="/Editcustomer" element={<Editcustomer/>}/>
         <Route path="/addfood"     element={<AddFood/>}/>
 
-       
+        <Route path="/addorder"     element={<AddOrder/>}/>
  
       
         </Routes>

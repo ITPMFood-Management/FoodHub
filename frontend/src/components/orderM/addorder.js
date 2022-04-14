@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import './addorder.css';
+import './addorder.css';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -75,7 +75,7 @@ return(
       <label>
       Customer Name :
       </label><br></br>
-      <input type="text" name= "customername" value={newUser.customername} placeholder="Enter the Customer Name"/>
+      <input type="text"  name= "customername" placeholder="Enter the Customer Name"/>
      
     </div>
   </div>
@@ -84,7 +84,7 @@ return(
       <label>
        Contact Number :
       </label><br></br>
-      <input type="number" name="phonenumber" value={newUser.phonenumber} required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"  placeholder="Enter the Contact Number"/>
+      <input type="number" name="phonenumber" required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"  placeholder="Enter the Contact Number"/>
      
     </div>
   </div>
@@ -94,7 +94,7 @@ return(
       <label >
       Address :
       </label><br></br>
-      <input type="text" name="address" value={newUser.address} placeholder="Enter the Address"/>
+      <input type="text" name="address"  placeholder="Enter the Address"/>
      
     </div>
   </div>
@@ -105,7 +105,7 @@ return(
       <label>
       Food Code :
       </label><br></br>
-      <input type="text" name="itemnumber" value={newUser.itemnumber} placeholder="Enter the Item Code"/>
+      <input type="text" name="itemnumber" placeholder="Enter the Item Code"/>
      
     </div>
   </div>
@@ -133,11 +133,11 @@ return(
       <label >
       Quantity :
       </label><br></br>
-      <input type="number" name="quantity" value={newUser.quantity}  placeholder="Enter the Quantity"/>
+      <input type="number" name="quantity"  placeholder="Enter the Quantity"/>
      
     </div>
   </div>
-
+<br></br>
 <div >
     <div ></div>
     <div >

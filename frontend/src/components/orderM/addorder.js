@@ -2,156 +2,208 @@ import React, { useState } from 'react';
 import './addorder.css';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import background from '../../img/Order.png';
 
-
+import "react-toastify/dist/ReactToastify.css";
 
 
 export default function AddOrder(){
 
-
-    const [loading, setLoading] = useState(false); //additional 
-    const [isError, setIsError] = useState(false);
-
-
-   const[newUser, setNewUser] = useState(
-        {
-          customername :  '',
-          category :  '',
-          itemnumber : '',
-          quantity : '',
-          phonenumber: '',
-          address : '',
+  const [customername, setCustomername] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [category, setCategory] = useState("");
+  const [itemnumber, setItemnumber] = useState("");
+  const [quantity, setQuantity] = useState("");
 
 
-        }
-   );
-
-   const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    //logic for adding data to the BACKENDe
     e.preventDefault();
-    
-    setLoading(true);
-    setIsError(false);
 
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-    const fromData = new FormData();
-    fromData.append('customername', newUser.customername);
-    fromData.append('category', newUser.category);
-    fromData.append('itemnumber', newUser.itemnumber);
-    fromData.append('quantity', newUser.quantity);
-    fromData.append('phonenumber', newUser.phonenumber);
-    fromData.append('address', newUser.address);
-      
-
-   axios.post('http://localhost:8070/order/create', fromData)
-    .then(res => {
-      console.log(res);
-       setLoading(false);
-      setNewUser({customername :'' , category : '' , itemnumber : '' , quantity : '' , phonenumber : '' , address :'' })
-        toast("Success! Order Added Successfully 😘")
-     })
-     .catch(err => {
-      console.log(err);
-      setLoading(false);
-      setIsError(true);
-      toast("Error! Order not Added: itemnumber is wrong")
-   });
-}
-
-const handleChange = (e) => {
-  setNewUser({...newUser, [e.target.itemnumber]: e.target.value});
-}
- 
+  
+    try {
+      //exception handling
+      var { data } = await axios.post(
+        "http://localhost:8070/orders/create",
+        { customername, phoneNumber, address, category, itemnumber, quantity  },
+        config
+      );
+      toast("Success! Added 😘");
+      setCustomername("");
+      setPhoneNumber("");
+      setAddress("");
+      setCategory("");
+      setItemnumber("");
+      setQuantity("");
+    } catch (error) {
+      toast(`Error! ${error?.response?.data?.error}`);
+      setTimeout(() => {}, 5000); //5s
+    }
+  };
+  
+  
 
 return(
- 
-<div>
- 
-<center><form className="w-full max-w-lg">
-    <center><b><p>Add Order</p></b></center>
- <br></br>
- 
-<div >
-    <div>
-      <label>
-      Customer Name :
-      </label><br></br>
-      <input type="text"  name= "customername" placeholder="Enter the Customer Name"/>
-     
-    </div>
-  </div>
-  <div >
-    <div>
-      <label>
-       Contact Number :
-      </label><br></br>
-      <input type="number" name="phonenumber" required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"  placeholder="Enter the Contact Number"/>
-     
-    </div>
-  </div>
 
-  <div>
-    <div >
-      <label >
-      Address :
-      </label><br></br>
-      <input type="text" name="address"  placeholder="Enter the Address"/>
-     
-    </div>
-  </div>
+ <div style={{backgroundImage:`url(${background})`,
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  width:"100%",
+  height:"100%",}}>
+
+<div className="AddOrderContainer px-24 flex items-center">
+
+<form className="w-full max-w-lg" onSubmit={handleSubmit}>
 
 
-  <div>
-    <div>
-      <label>
-      Food Code :
-      </label><br></br>
-      <input type="text" name="itemnumber" placeholder="Enter the Item Code"/>
-     
-    </div>
-  </div>
-  
-  <div>
-   <div>
-      <label>
-      Category :
-      </label>
-      <div>
-        <select>
-          <option>Select</option>
-          <option>************</option>
-          <option>***********</option>
-          <option>***********</option>
-        </select>
-        <div> 
-        </div>
-      </div>
-      </div>
-    </div>
- 
-    <div >
-    <div >
-      <label >
-      Quantity :
-      </label><br></br>
-      <input type="number" name="quantity"  placeholder="Enter the Quantity"/>
-     
-    </div>
-  </div>
+<center><b><h1>Add Order</h1></b></center>
+
 <br></br>
-<div >
-    <div ></div>
-    <div >
-      <button  type="submit">
-        Submit
-      </button>
-    </div>
-  </div>
 
-</form></center>
-
-
+<div className="flex flex-wrap -mx-3 mb-1">
+<div className="w-full px-3">
+  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-oname">
+   Customer Name:
+  </label>
+  <input type="text" 
+  id="grid-oname" 
+   name="customername" 
+   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+   placeholder="Enter the Customer Name"
+   value={customername}
+   onChange={(e)=>{
+    setCustomername(e.target.value); 
+   }} 
+   />     
+</div>
+</div>
+<div className="flex flex-wrap -mx-3 mb-1">
+<div className="w-full px-3">
+  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-ophone">
+   Contact Number:
+  </label>
+  <input type="number" 
+  
+  id="grid-ophone" 
+  name="phoneNumber"  
+  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
+  placeholder="Enter the Contact Number" 
+  value={phoneNumber}
+  onChange={(e)=>{
+  setPhoneNumber(e.target.value); 
+   }} 
+  />
+ 
+</div>
+</div>
+<div className="flex flex-wrap -mx-3 mb-1">
+<div className="w-full px-3">
+  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-oaddress">
+  Address:
+  </label>
+  <input type="text" 
+  id="grid-oaddress"  
+  name="address"
+  
+   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
+   placeholder="Enter the Address" 
+   value={address}
+   onChange={(e)=>{
+   setAddress(e.target.value); 
+     }} 
+   />
+ 
+</div>
 </div>
 
-    )
-}
+<div className="flex flex-wrap -mx-3 mb-1">
+<div className="w-full px-3">
+  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-ocategory">
+  Category:
+  </label>
+  <div className="relative">
+    <select 
+    id="grid-ocategory" 
+    name="category"  
+    className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+    value={category}
+    onChange={(e)=>{
+    setCategory(e.target.value); 
+        }} 
+    >
+      <option>Select</option>
+      <option>Breakfast</option>
+      <option>Lunch</option>
+      <option>Dinner</option>
+    </select>
+    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg> 
+    </div>
+  </div>
+  </div>
+</div>
 
+
+<div className="flex flex-wrap -mx-3 mb-1">
+<div className="w-full px-3">
+  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-ocode">
+  Item Code :
+  </label>
+  <input type="text" 
+  id="grid-ocode"  
+  name="itemnumber" 
+  
+   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
+   placeholder="Enter the Item Code" 
+   value={itemnumber}
+   onChange={(e)=>{
+   setItemnumber(e.target.value); 
+     }} 
+   />
+ 
+</div>
+</div>
+
+<div className="flex flex-wrap -mx-3 mb-1">
+<div className="w-full px-3">
+  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-oquantity">
+  Quantity :
+  </label>
+  <input type="number" 
+  id="grid-oquantity"  
+  name="quantity" 
+  
+   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
+   placeholder="Enter the Quantity" 
+   value={quantity}
+   onChange={(e)=>{
+    setQuantity(e.target.value); 
+     }} 
+   />
+ 
+</div>
+</div>
+
+<div className="md:flex md:items-center">
+<div className="md:w-1/3"></div>
+<div className="md:w-2/3">
+  <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-4 rounded" type="submit">
+    Submit
+  </button>
+</div>
+</div>
+
+</form>
+
+</div>
+</div>
+
+)
+}

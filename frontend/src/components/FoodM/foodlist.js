@@ -5,85 +5,118 @@ import axios from 'axios';
 
 
 export default function FoodList(){
+  
   const [listOfFood, setListOfFood] = useState([]);
 
   useEffect(() => {
-      axios.get("http://localhost:8070/foods").then((response) => {
+      axios.get("http://localhost:8070/food/").then((response) => {
         setListOfFood(response.data);
       });
     }, []);
+    
+    const handleRemove =(id) =>{
 
+      axios.delete(`http://localhost:8070/customer/delete/${id}`).then((res)=>{
+          console.log("delete succes");
+          
+          })
+        }
+     
    
     
 
 
 
     return (
-    //   <table class="table-auto">
-    //   <thead>
-    //     <tr>
-    //       <th>Song</th>
-    //       <th>Artist</th>
-    //       <th>Year</th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>
-    //     <tr>
-    //       <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-    //       <td>Malcolm Lockyer</td>
-    //       <td>1961</td>
-    //     </tr>
-    //     <tr>
-    //       <td>Witchy Woman</td>
-    //       <td>The Eagles</td>
-    //       <td>1972</td>
-    //     </tr>
-    //     <tr>
-    //       <td>Shining Star</td>
-    //       <td>Earth, Wind, and Fire</td>
-    //       <td>1975</td>
-    //     </tr>
-    //   </tbody>
-    // </table>
-
-<div></div>
-
-
-    //   <div className="usersDisplay">
-       
+      <div className="usersDisplay">
      
-    //    <table class="table-auto">
-    //    <thead>
-    //     <tr>
-    //          <th>Song</th>
-    //        <th>Artist</th>
-    //         <th>Year</th>
-    //         </tr>
-    //             </thead>
-    //             <tbody>
-    //             {listOfFood.map((food) => (
-    //               <tr>
-  
-    //                     <td>
-    //                         <a href={`/Editcustomer/${food._id}}`} style={{ color: 'black' }}>
-    //                         {food.Foodname}
-    //                     </a>
-  
-    //                 </td><th scope="row">{food.Itemprice}</th><th scope="row">{food.Foodstatus}</th>
-                      
-  
-  
-  
-    //                 </tr>
-    //               ))}
-  
-  
-  
-    //             </tbody>
-    //           </table>
+   
+      <div class="flex flex-col">
+               <div class="overflow-x-auto">
+                   <div class="align-middle inline-block min-w-full">
+                       <div class="shadow overflow-hidden">
+                         <h1 className="text-center ">All foods</h1>
+                         <br></br>
+                         <br></br>
+                           <table class="table-fixed min-w-full divide-y divide-gray-200 ">
+                               <thead class="bg-gray-100">
+                                   <tr>
+                                       <th scope="col" class="p-4">
+ 
+                                       </th>
+                                       <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
+ 
+                                       </th>
+                                       <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
+                                           Foodcode
+                                       </th>
+                                       <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
+                                           Foodname
+                                       </th>
+                                       <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
+                                           Itemprice
+                                       </th>
+                                       <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
+                                           Foodcatergory
+                                       </th>
+                                       <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
+                                       ExpDate
+                                       </th>
+                                       <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
+                                       MFDDate
+                                       </th>
+                                       
+                           <th scope="col" class="p-4">
+                                       </th>
+                                   </tr>
+                               </thead>
+                               <tbody class="bg-white divide-y divide-gray-200"> {listOfFood.map((user) => (
+
+<tr class="hover:bg-gray-100">
+    <td class="p-4 w-4">
+
+    </td>
+     <td class="p-4 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
+        <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>
+        <div class="text-sm font-normal text-gray-500">
+            <div class="text-base font-semibold text-gray-900"></div>
+            <div class="text-sm font-normal text-gray-500"></div>
+        </div>
+    </td> 
+    <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.Foodcode}</td>
+    <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.Foodname}</td>
+    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{user.Itemprice}</td>
+    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{user.Foodcatergory}</td>
+    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{user.ExpDate}</td>
+    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{user.MFDDate}
+        <div class="flex items-center">
+
+        </div>
+    </td>
+     <td class="p-4 whitespace-nowrap space-x-2 ">
+   
+        <button   type="button" data-modal-toggle="user-modal" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+            <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
+            Edit user
+           
+        </button>
+    <button onClick={() => handleRemove(user._id)} type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+            <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+            &nbsp;Delete user
+        </button> 
         
-      
-    // </div>
+        
+    </td>
+</tr>
+
+))}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
     )
   }
     

@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 import './AddFood.css';
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 
 
 
@@ -31,13 +31,13 @@ export default function AddFood(){
 
        axios.post("http://localhost:8070/food/create",newFood).then(()=>{
          alert("food added")
-         setfoodcode("");
-         setfoodname("");
-         setitemprice("");
-         setfoodcatergory("");
-         setfoodstatus("");
-         setexpDate("");
-         setmFDDate("");
+          setfoodcode("");
+          setfoodname("");
+          setitemprice("");
+          setfoodcatergory("");
+          setfoodstatus("");
+          setexpDate("");
+          setmFDDate("");
        }).catch((err)=>{
          alert(err)
        })
@@ -64,10 +64,12 @@ return(
        FOOD CODE:
       </label>
       <input type="text" 
-      id="grid-fcode" 
+       id="grid-fcode" 
        name="Foodcode" 
+       value={Foodcode}
        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
        placeholder="Enter the Food Code"
+       
        onChange={(e)=>{
         setfoodcode(e.target.value); 
        }} 
@@ -82,8 +84,10 @@ return(
       <input type="text" 
       id="grid-fName" 
       name="Foodname"  
+      value={Foodname}
       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
       placeholder="Enter the Food Name" 
+     
       onChange={(e)=>{
       setfoodname(e.target.value); 
        }} 
@@ -97,8 +101,9 @@ return(
       Food Price:
       </label>
       <input type="text" 
-      id="grid-fprice"  
-      name="Itemprice" 
+       id="grid-fprice"  
+       name="Itemprice" 
+       value={Itemprice}
        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
        placeholder="Enter the Food Price" 
        onChange={(e)=>{
@@ -117,15 +122,17 @@ return(
       <div className="relative">
         <select 
         id="grid-fcatergory" 
-        name="Itemprice"  
+        name="Foodcatergory"
+        defaultValue={Foodcatergory}
+        value={Foodcatergory}  
         className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         onChange={(e)=>{
         setfoodcatergory(e.target.value); 
             }} 
-        >
-          <option>New Mexico</option>
-          <option>Missouri</option>
-          <option>Texas</option>
+        >  <option value="" disabled selected>Select your option</option>
+          <option>Breakfast</option>
+          <option>Lunch</option>
+          <option>Dinner</option>
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
         <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg> 
@@ -142,15 +149,18 @@ return(
       <div className="relative">
         <select  
         id="grid-fstatus" 
-        name="Foodstatus"  
+        name="Foodstatus"
+        defaultValue={Foodstatus}
+        value={Foodstatus}  
         className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         onChange={(e)=>{
         setfoodstatus(e.target.value); 
           }} 
         >
-          <option>New Mexico</option>
-          <option>Missouri</option>
-          <option>Texas</option>
+          <option value="" disabled selected>Select your option</option>
+          <option>in stock</option>
+          <option>out of stock</option>
+         
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg> 
@@ -167,7 +177,8 @@ return(
     <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
   </div>
   <input type="date" 
-  name=" ExpDate"   
+  name=" ExpDate" 
+  value={ExpDate}  
   className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
   placeholder="Select date" 
   onChange={(e)=>{
@@ -184,7 +195,8 @@ return(
     <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
   </div>
   <input type="date"  
-  name="MFDDate"   
+  name="MFDDate"
+  value={MFDDate}   
   className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
   placeholder="Select date"
   onChange={(e)=>{

@@ -5,37 +5,35 @@ const Order = new Schema({
     customername: {
         type: String,
 
-        trim: true
     }, 
+
+    phoneNumber: {
+        type: Number,
+
+    },
+
+    address: {
+        type: String,
+   
+    },
 
     category: {
         type: String,
 
-        trim: true
     },
 
     itemnumber: {
-        type: Number,
+        type: String,
 
-        trim: true
     }, 
 
     quantity: {
-        type: String,
-
-        trim: true
-    },
-    
-    phoneNumber: {
         type: Number,
 
-        trim: true
     },
-    address: {
-        type: String,
-        
-        trim: true
-    },
+    
+    
+    
  
 })
 

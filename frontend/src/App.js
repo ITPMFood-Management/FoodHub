@@ -18,7 +18,7 @@ import Viewdelivery from "./components/delivery/Viewdelivery"
 
 
 import AddOrder from "./components/orderM/addorder"
-=======
+
 import FoodList from "./components/FoodM/foodlist";
 
 import Form from "./components/customerM/cus";

@@ -1,6 +1,12 @@
+
+/*import React,{useEffect,useState} from "react";
+import axios from 'axios';
+import moment from 'moment';
+=======
 // import React,{useEffect,useState} from "react";
 // import axios from 'axios';
 // import moment from 'moment';
+
 
 // const Viewdelivery = () => {
 //     const[details,setDetails]=useState([]);
@@ -72,5 +78,10 @@
 // </div>
 //     )
       
+
+    }
+  export default Viewdelivery;*/
+
 //     }
 //   export default Viewdelivery;
+

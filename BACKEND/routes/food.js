@@ -1,9 +1,35 @@
 const router = require("express").Router();
 const Food = require("../models/Food")
+const multer = require('multer');
+let path = require('path');
+const { v4: uuidv4 } = require('uuid');
+
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './frontend/public/foodima');
+    },
+    filename: function(req, file, cb){
+        cb(null, uuidv4() + '-' + new Date().toISOString().replace(/:/g, '-') + path.extname(file.originalname));
+    }
+
+
+});
+
+const fileFilter = (req, file, cb) =>{
+    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png']
+    if(allowedFileTypes.includes(file.mimetype)){
+        cb(null, true);
+    }else{
+        cb(null, false);
+    }
+}
+
+let upload = multer({storage,fileFilter});
 
 //route create
 
-router.route("/create").post(async (req, res) => {
+router.route("/create").post(upload.single('Image'),async (req, res) => {
     const {
         Foodcode,
         Foodname,
@@ -14,7 +40,9 @@ router.route("/create").post(async (req, res) => {
     const Itemprice = Number(req.body.Itemprice);
     const ExpDate   = Date(req.body.ExpDate);
     const MFDDate   = Date(req.body.MFDDate);
+    const Image     = req.file.filename;
 
+    
     //database schema
    const newFood = new Food({
        Foodcode,
@@ -23,24 +51,26 @@ router.route("/create").post(async (req, res) => {
        Foodcatergory,
        Foodstatus,
        ExpDate,
-       MFDDate
+       MFDDate,
+       Image
     });
 
    //check saveing data
 
-   const isAvailable = await Food.findOne({
+   const isAvailable = await  Food.findOne({
        Foodcode :{ $regex: new RegExp(Foodcode, "i") },
        Foodname: Foodname,
 
-       
+
    });
+
    if(isAvailable) {
        return res
-       .status(401)
+       .status(400)
        .json({error: "already food  please add some new food"});
    }
 
-   await newFood
+    await newFood
       .save()
       .then(() => res.status(200).json({success:true}))
       .catch(
@@ -76,7 +106,7 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 //router for update 
-router.route("/update/:id").put(async (req, res) => {
+router.route("/update/:id").put(upload.single('image') ,async (req, res) => {
     const{ id } = req.params;
     const{
        Foodcode,
@@ -85,7 +115,8 @@ router.route("/update/:id").put(async (req, res) => {
        Foodcatergory,
        Foodstatus,
        ExpDate,
-       MFDDate
+       MFDDate,
+       Image
    } = req.body;
 
     await Food.findByIdAndUpdate(id, {
@@ -95,7 +126,8 @@ router.route("/update/:id").put(async (req, res) => {
         Foodcatergory,
         Foodstatus,
         ExpDate,
-        MFDDate
+        MFDDate,
+        Image
  
     })
      .then(() => res.json({success: true}))

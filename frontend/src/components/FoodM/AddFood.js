@@ -15,7 +15,9 @@ export default function AddFood(){
       const[Foodstatus, setfoodstatus]=useState("");
       const[ExpDate, setexpDate]=useState("");
       const[MFDDate, setmFDDate]=useState("");
-   
+      const[Image, setimage]=useState("");
+
+
       function sendData(e){
         e.preventDefault();
        
@@ -26,10 +28,21 @@ export default function AddFood(){
           Foodcatergory,
           Foodstatus,
           ExpDate,
-          MFDDate
+          MFDDate,
+          Image
         }
 
-       axios.post("http://localhost:8070/food/create",newFood).then(()=>{
+        const formData = new FormData();
+        formData.append('Foodcode', Foodcode);
+        formData.append('Foodname', Foodname);
+        formData.append('Itemprice', Itemprice);
+        formData.append('Foodcatergory', Foodcatergory);
+        formData.append('Foodstatus', Foodstatus);
+        formData.append('ExpDate',  ExpDate);
+        formData.append('MFDDate', MFDDate);
+        formData.append('Image', Image);
+
+       axios.post("http://localhost:8070/food/create", formData).then(()=>{
          alert("food added")
           setfoodcode("");
           setfoodname("");
@@ -38,12 +51,15 @@ export default function AddFood(){
           setfoodstatus("");
           setexpDate("");
           setmFDDate("");
+          setimage("");
+          document.getElementById('formFile').value= null;
        }).catch((err)=>{
          alert(err)
        })
 
       }
-
+     
+  
   
 
 
@@ -54,10 +70,10 @@ return(
  
 <div className="AddFoodContainer px-24 flex items-center">
  
-<form className="w-full max-w-lg" onSubmit={sendData}>
- <br></br>
- <br></br>
- <br></br> 
+<form className="w-full max-w-lg" onSubmit={sendData} encType='multipart/form-data'>
+<h1 className="text-4xl font-normal leading-normal mt-0 mb-2  text-center text-gray-700">
+  Add Food
+</h1>
 <div className="flex flex-wrap -mx-3 mb-1">
     <div className="w-full px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-fcode">
@@ -66,10 +82,11 @@ return(
       <input type="text" 
        id="grid-fcode" 
        name="Foodcode" 
+      //  required pattern=""
        value={Foodcode}
        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
        placeholder="Enter the Food Code"
-       
+      
        onChange={(e)=>{
         setfoodcode(e.target.value); 
        }} 
@@ -83,7 +100,8 @@ return(
       </label>
       <input type="text" 
       id="grid-fName" 
-      name="Foodname"  
+      name="Foodname"
+      required="required"
       value={Foodname}
       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
       placeholder="Enter the Food Name" 
@@ -204,11 +222,24 @@ return(
         }} 
   />
 </div>
+<br></br>
+ <div class="flex justify-center">
+  <div class="mb-3 w-96">
+    <label for="formFile" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Upload the Food image:</label>
+    <input className="form-control
+    appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file" id="formFile"
+    onChange={(e)=>{
+      
+      setimage(e.target.files[0]); 
+            }} 
+    />
+  </div>
+</div> 
 
 <div className="md:flex md:items-center">
     <div className="md:w-1/3"></div>
     <div className="md:w-2/3">
-      <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-4 rounded" type="submit">
+      <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
         Submit
       </button>
     </div>

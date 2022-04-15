@@ -55,7 +55,7 @@ return(
 
   <div>
 
-<header class="text-gray-400  body-font  fixed">
+<header className="AddOrder" class="text-gray-400  body-font  fixed">
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">
     <a href="/home" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
       <img src={Logo2} className="w-12" />
@@ -79,6 +79,10 @@ return(
   </div>
 </header>
 
+
+
+
+
  <div style={{backgroundImage:`url(${background})`,
   backgroundPosition: "center",
   backgroundSize: "cover",
@@ -86,6 +90,8 @@ return(
   height:"100%",}}>
 
 <div className="AddOrderContainer px-24 flex items-center">
+
+ 
 
 <form className="w-full max-w-lg" onSubmit={handleSubmit}>
 

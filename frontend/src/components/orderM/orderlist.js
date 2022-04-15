@@ -76,7 +76,9 @@ export default function OrderList(){
                                        <th scope="col" class="p-4">
  
                                        </th>
-                                       
+                                       <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
+ 
+                                       </th>
                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
                                            Customer Name
                                        </th>

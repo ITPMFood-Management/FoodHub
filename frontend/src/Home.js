@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "./img/Logo.png"
+
 import { useState} from "react";
 import {Pie, Doughnut} from 'react-chartjs-2';
 
@@ -34,7 +35,7 @@ const Home = () => {
         '#003350',
         '#35014F'
         ],
-        data: [65, 59, 80, 81, 56]
+        data: [20, 59, 80, 81, 56]
       }
     ]
   }

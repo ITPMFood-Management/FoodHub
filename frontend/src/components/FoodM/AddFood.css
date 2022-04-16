@@ -1,4 +1,12 @@
- .AddFoodContainer{
+.container{
+  align-content:center;
+}
+  
+  
+  
+  
+  
+  /* .AddFoodContainer{
     width: 600px;
     height: 750px;
     border-color: #2a90cf;
@@ -10,20 +18,20 @@
     background-color:seashell;
     
 
-}
-.form-group{
+}  */
+/* .form-group{
     width:40%;
     margin-left:15%;
     margin-right:34%;
     
     border-color:#2a90cf;
     border: #2a90cf;
-}
+} */
 
 
   
  
-.custom-select{
+/* .custom-select{
   width:40%;
   margin-left:15%;
   margin-right:34%;
@@ -31,4 +39,4 @@
   border: #2a90cf;
    
    
-} 
+}  */

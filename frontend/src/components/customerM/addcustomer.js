@@ -122,6 +122,7 @@ const getDataFromAPI = () => {
 </header>
 <img src={customer} className="bg-gradient-to-bl md:h-full md:w-full absolute mt-20" />
         <div className="grid min-h-screen place-items-center "  ><br/><br/>
+       
             <form onSubmit={handleSubmit} encType='multipart/form-data'  className="w-11/12 p-12  sm:w-8/12 md:w-1/2 lg:w-5/12 mt-36 absolute"><br />
             <div className="">
 

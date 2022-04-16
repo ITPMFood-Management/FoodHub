@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     
-    <section class="text-gray-600 body-font">
+    <section class="text-gray-600 body-font ">
       <div class="shadow-md w-full fixed top-0 left-0">
         <div className="md:flex items-center justify-between bg-zinc-800 py-4 md:px-10 px-7 ">
           <div className="font-bold text-2xl cursor-pointer flex items-center font-[poppins] text-white right-11 ">
@@ -53,7 +53,7 @@ const Home = () => {
                         <div class="flex flex-row items-center h-8">
 
                         </div>
-                        <div className="ml-2 "> <img src={Logo} alt="Logo" /></div>
+                      
                     </li>
 
                     <li>
@@ -121,43 +121,38 @@ const Home = () => {
                
             </div>
         </div>
-  <div class="container px-16 py-24 mx-auto">
+  <div class="container px-16 py-24 mx-auto ">
     <div class="flex flex-col text-center w-full mb-20">
-      <h1 class="sm:text-4xl text-8xl font-medium title-font mb-4 text-gray-900 pt-6">Welcome To FoodHub Dashboard</h1>
+      <h1 class="text-center text-6xl">Welcome To FoodHub Dashboard</h1>
       
     </div>
     <div class="flex flex-wrap -m-4 text-center">
       <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+        <div class="border-2 border-orange-500  px-4 py-6 rounded-lg bg-orange-300">
         <ion-icon name="cash-outline"></ion-icon>
           <h2 class="title-font font-medium text-3xl text-gray-900">2.7K</h2>
           <p class="leading-relaxed">Total Earn</p>
         </div>
       </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-        <ion-icon name="people-sharp"></ion-icon>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full ">
+        <div class="border-2 border-orange-500 px-4 py-6 rounded-lg bg-orange-300">
+        <ion-icon name="people-sharp "></ion-icon>
           <h2 class="title-font font-medium text-3xl text-gray-900">1.3K</h2>
-          <p class="leading-relaxed">Users</p>
+          <p class="leading-relaxed">Customers</p>
         </div>
       </div>
       <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
-            <path d="M3 18v-6a9 9 0 0118 0v6"></path>
-            <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
-          </svg>
+        <div class="border-2 border-orange-500  px-4 py-6 rounded-lg bg-orange-300">
+        <ion-icon name="bag-outline"></ion-icon>
           <h2 class="title-font font-medium text-3xl text-gray-900">74</h2>
-          <p class="leading-relaxed">Files</p>
+          <p class="leading-relaxed">Orders</p>
         </div>
       </div>
       <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
+        <div class="border-2 border-orange-500  px-4 py-6 rounded-lg bg-orange-300">
+        <ion-icon name="storefront-outline"></ion-icon>
           <h2 class="title-font font-medium text-3xl text-gray-900">46</h2>
-          <p class="leading-relaxed">Places</p>
+          <p class="leading-relaxed">Pending</p>
         </div>
       </div>
     </div>
@@ -165,8 +160,7 @@ const Home = () => {
   <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-col text-center w-full mb-20">
-      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Pricing</h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Banh mi cornhole echo park skateboard authentic crucifix neutra tilde lyft biodiesel artisan direct trade mumblecore 3 wolf moon twee</p>
+      
     </div>
     <div class="lg:w-2/3 w-full mx-auto overflow-auto">
       <table class="table-auto w-full text-left whitespace-no-wrap">

@@ -9,14 +9,14 @@ export default function FoodList(){
   const [listOfFood, setListOfFood] = useState([]);
 
   useEffect(() => {
-      axios.get("http://localhost:8070/food/").then((response) => {
-        setListOfFood(response.data);
+      axios.get("http://localhost:8070/food/").then((res) => {
+        setListOfFood(res.data);
       });
     }, []);
     
     const handleRemove =(id) =>{
 
-      axios.delete(`http://localhost:8070/customer/delete/${id}`).then((res)=>{
+      axios.delete(`http://localhost:8070/food/delete/${id}`).then((res)=>{
           console.log("delete succes");
           
           })
@@ -70,25 +70,25 @@ export default function FoodList(){
                                        </th>
                                    </tr>
                                </thead>
-                               <tbody class="bg-white divide-y divide-gray-200"> {listOfFood.map((user) => (
+                               <tbody class="bg-white divide-y divide-gray-200"> {listOfFood.map((food) => (
 
 <tr class="hover:bg-gray-100">
     <td class="p-4 w-4">
 
     </td>
      <td class="p-4 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
-        <img class="h-10 w-10 rounded-full" src={"foodima/" + user.Image}></img>
+        <img class="h-10 w-10 rounded-full" src={"foodima/" + food.Image}></img>
         <div class="text-sm font-normal text-gray-500">
             <div class="text-base font-semibold text-gray-900"></div>
             <div class="text-sm font-normal text-gray-500"></div>
         </div>
     </td> 
-    <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.Foodcode}</td>
-    <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.Foodname}</td>
-    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{user.Itemprice}</td>
-    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{user.Foodcatergory}</td>
-    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{user.ExpDate}</td>
-    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{user.MFDDate}
+    <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{food.Foodcode}</td>
+    <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{food.Foodname}</td>
+    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{food.Itemprice}</td>
+    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{food.Foodcatergory}</td>
+    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{food.ExpDate}</td>
+    <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">{food.MFDDate}
         <div class="flex items-center">
 
         </div>
@@ -100,7 +100,7 @@ export default function FoodList(){
             Edit 
            
         </button>
-    <button onClick={() => handleRemove(user._id)} type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+    <button onClick={() => handleRemove(food._id)} type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
             <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
             &nbsp;Delete 
         </button> 

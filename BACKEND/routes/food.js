@@ -106,7 +106,7 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 //router for update 
-router.route("/update/:id").put(upload.single('image') ,async (req, res) => {
+router.route("/update/:id").put(upload.single('Image') ,async (req, res) => {
     const{ id } = req.params;
     const{
        Foodcode,

@@ -18,11 +18,12 @@ import Viewdelivery from "./components/delivery/Viewdelivery"
 
 
 import AddOrder from "./components/orderM/addorder"
+import OrderList from "./components/orderM/orderlist"
 
 import FoodList from "./components/FoodM/foodlist";
 
-import Form from "./components/customerM/cus";
-import Cus from "./components/customerM/cus";
+
+
 
 
 
@@ -45,8 +46,8 @@ const App = () => {
   
 
         <Route path="/addcustomer" element={<Addcustomer/>} />
-        <Route path="/form"     element={<Form/>}/>
-        <Route path="/cus"     element={<Cus/>}/>
+
+
         <Route path="/signin" element={<SignInForm/>} />
         <Route path="/signup" element={<SignUpForm/>}/>
         <Route path="/customerlist" element={<Customerlist/>}/>
@@ -54,6 +55,7 @@ const App = () => {
 
 
         <Route path="/addorder"     element={<AddOrder/>}/>
+        <Route path="/orderlist"   element={<OrderList/>}/>
  
 =======
 

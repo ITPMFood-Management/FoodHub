@@ -1,9 +1,9 @@
 import React,{useState} from "react"
-import './AddFood.css';
+// import './AddFood.css';
 import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
 import Logo2 from "../../img/Logo-2.png"
-
+import Swal from "sweetalert2";
 
 
 export default function AddFood(){
@@ -43,7 +43,7 @@ export default function AddFood(){
         formData.append('Image', Image);
 
        axios.post("http://localhost:8070/food/create", formData).then(()=>{
-         alert("food added")
+        //  alert("food added")
           setfoodcode("");
           setfoodname("");
           setitemprice("");
@@ -56,9 +56,29 @@ export default function AddFood(){
        }).catch((err)=>{
          alert(err)
        })
-
-      }
      
+       Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      
+}
+
+const Clear= ()=>{
+  setfoodcode("");
+  setfoodname("");
+  setitemprice("");
+  setfoodcatergory("");
+  setfoodstatus("");
+  setexpDate("");
+  setmFDDate("");
+  setimage("");
+  
+
+}
   
   
 
@@ -76,8 +96,8 @@ return(
       <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-      <a href="/cus" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
-      <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Account List</a>
+      <a href="/addDelivery" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
+      <a href="/Viewdelivery" class="mr-5 hover:text-red-700 duration-500">Account List</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>
@@ -94,10 +114,12 @@ return(
   </div>
 </header>
  <br></br>
- <br></br>
-<div className="AddFoodContainer px-24 flex items-center">
- 
-<form className="w-full max-w-lg" onSubmit={sendData} encType='multipart/form-data'>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<div class=" z-10 flex justify-center">
+<form className="w-11/12 p-12 bg-gray-50 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20" onSubmit={sendData} encType='multipart/form-data'>
 <h1 className="text-4xl font-normal leading-normal mt-0 mb-2  text-center text-gray-700">
   Add Food
 </h1>
@@ -158,13 +180,12 @@ return(
      
     </div>
   </div>
-  
   <div className="flex flex-wrap -mx-3 mb-1">
    <div className="w-full px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-fcatergory">
       Food catergory:
       </label>
-      <div className="relative">
+      <div className="">
         <select 
         id="grid-fcatergory" 
         name="Foodcatergory"
@@ -174,14 +195,20 @@ return(
         onChange={(e)=>{
         setfoodcatergory(e.target.value); 
             }} 
-        >  <option value="" disabled selected>Select your option</option>
+        >  
+       
+        <option value="" disabled selected>Select your option</option>
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
           <option>Sri Lankan</option>
           <option>Indian</option>
           <option></option>
         </select>
-        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg> 
-        </div>
+        
+       
+        
+       
       </div>
       </div>
     </div>
@@ -191,7 +218,7 @@ return(
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
       Food status:
       </label>
-      <div className="relative">
+      <div className="">
         <select  
         id="grid-fstatus" 
         name="Foodstatus"
@@ -208,18 +235,18 @@ return(
          
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-           <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg> 
+           
         </div>
       </div>
       </div>
     </div> 
   
-  <div className="relative">
+  <div className="">
    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
    ExpDate:
      </label> 
   <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-    <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+    
   </div>
   <input type="date" 
   name=" ExpDate" 
@@ -232,12 +259,12 @@ return(
   />
 </div>
 
-<div className="relative">
+<div className="">
    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
    MFDDate:
      </label> 
-  <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-    <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+  <div className=" inset-y-0 left-0 items-center pl-3 pointer-events-none">
+   
   </div>
   <input type="date"  
   name="MFDDate"
@@ -250,7 +277,7 @@ return(
   />
 </div>
 
- <div class="relative">
+ <div class="">
   <div class="mb-3 w-96">
     <label for="formFile" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Upload the Food image:</label>
     <input className="form-control
@@ -266,22 +293,28 @@ return(
 <div className="md:flex md:items-center">
     <div className="md:w-1/3"></div>
     <div className="md:w-2/3">
+
+    <a href='/FoodList'>
       <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
         Submit
-      </button>
+      </button></a>
+      <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center ml-5">
+       
+       Clear
+   </button>  
     </div>
   </div>
 
 </form>
-
-
-
-
-
-
-
-
 </div>
+
+
+
+
+
+
+
+
 </div>
 
     )

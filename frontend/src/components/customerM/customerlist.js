@@ -1,7 +1,10 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
-/*import Swal from 'sweetalert2'*/
+import Logo2 from "../../img/Logo-2.png"
+import { toast } from 'react-toastify';
+
+
 
 
 
@@ -10,6 +13,7 @@ import axios from 'axios';
 
 function Customerlist() {
     const [listOfUsers, setListOfUsers] = useState([]);
+   
 
     useEffect(() => {
         axios.get("http://localhost:8070/customer").then((response) => {
@@ -18,10 +22,14 @@ function Customerlist() {
       }, []);
 
     
+    
       const handleRemove =(id) =>{
 
   axios.delete(`http://localhost:8070/customer/delete/${id}`).then((res)=>{
       console.log("delete succes");
+      toast("Customer Deleted !");
+      id.preventDefault();
+     
       
       })
     }
@@ -29,14 +37,41 @@ function Customerlist() {
  
     
   return (
+      
     <div className="usersDisplay">
+      
+      <header class="text-gray-400  body-font  fixed">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">
+    <a href="/home" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+      <img src={Logo2} className="w-12" />
+      <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
+    </a>
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
+      <a href="/addcustomer" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
+      <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Account List</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
+    </nav>
+   {/* <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div>  */}
+
+  
+
+   <a href="/signin"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Log Out
      
+    <ion-icon name="person-circle-outline"></ion-icon>
+    
+    </button></a>
    
-     <div class="flex flex-col">
+  </div>
+</header>
+
+     <div class="flex flex-col ">
               <div class="overflow-x-auto">
                   <div class="align-middle inline-block min-w-full">
+         
                       <div class="shadow overflow-hidden">
-                          <table class="table-fixed min-w-full divide-y divide-gray-200">
+                      <div className="text-3xl text-black mt-28 text-center mb-6"> All Customers</div>
+                          <table class="table-fixed min-w-full divide-y divide-gray-200 border-2 border-y border-black" >
                               <thead class="bg-gray-100">
                                   <tr>
                                       <th scope="col" class="p-4">

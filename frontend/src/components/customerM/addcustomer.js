@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import Logo2 from "../../img/Logo-2.png"
+import customer from "../../img/customer.png"
 
 
 
@@ -53,7 +54,8 @@ const Addcustomer = () =>{
               console.log(res);
               setLoading(false);
               setNewUser({name :'' , age : '' , gender : '' , address : '' , photo : '' , email:'', phone:''})
-              toast("Success! Customer Added")
+            
+              toast("Customer added successfully !!")
            })
            .catch(err => {
               console.log(err);
@@ -94,14 +96,14 @@ const getDataFromAPI = () => {
 
   return (
     <div >
-      <header class="text-gray-400  body-font  fixed">
+      <header class="text-gray-400  body-font  fixed " > 
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">
     <a href="/home" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
       <img src={Logo2} className="w-12" />
       <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-      <a href="/cus" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
+      <a href="/addcustomer" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
       <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Account List</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
@@ -118,9 +120,9 @@ const getDataFromAPI = () => {
    
   </div>
 </header>
-            
-        <div className="grid min-h-screen place-items-center"  ><br/><br/>
-            <form onSubmit={handleSubmit} encType='multipart/form-data'  className="w-11/12 p-12 bg-gray-800 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20"><br />
+<img src={customer} className="bg-gradient-to-bl md:h-full md:w-full absolute mt-20" />
+        <div className="grid min-h-screen place-items-center "  ><br/><br/>
+            <form onSubmit={handleSubmit} encType='multipart/form-data'  className="w-11/12 p-12  sm:w-8/12 md:w-1/2 lg:w-5/12 mt-36 absolute"><br />
             <div className="">
 
             <div class="">Name
@@ -133,12 +135,12 @@ const getDataFromAPI = () => {
               <br /> 
               <div class="">Age
       <input  value={newUser.age}  onChange={handleChange} required pattern="[1-9]{1,3}" title="Age cannot contain any letters or special characters  and Age > 0"  type="text" name="age" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
-      <label for="age" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Age</label>
+      <label for="age" class="related text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
   </div>
                  <br /> 
                  <div class="">Gender
       <input   value={newUser.gender}  onChange={handleChange} required pattern="[A-Za-z]+" title="Gender cannot contain any numbers or special characters"  type="text" name="gender" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
-      <label for="gender" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Gender</label>
+      <label for="gender" class=" text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
   </div>
                   <br />
 

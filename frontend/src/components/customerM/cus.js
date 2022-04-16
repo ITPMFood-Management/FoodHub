@@ -1,19 +1,93 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
-
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function Cus() {
     
     
-    const [listOfUsers, setOfUsers] = useState([]);
-
-    useEffect(() => {
-        axios.get("http://localhost:8070/customer").then((response) => {
-          setOfUsers(response.data);
-        });
-      }, []);
+     
+    const [loading, setLoading] = useState(false); //additional 
+    const [isError, setIsError] = useState(false);
+    const [listOfUsers, setListOfUsers] = useState([]);
+  
+      useEffect((id) => {
+          axios.get(`http://localhost:8070/customer/user/${id}`).then((response) => {
+            setListOfUsers(response.data);
+          });
+        }, []);
+  
+  
+    const [newUser, setNewUser] = useState(
+        {
+            name: '',
+            age : '',
+            gender : '',
+            address: '',
+            phone: '',
+            email : '',
+            photo: '',
+        }
+    );
+  
+    const handleSubmit = (e) => {
+        e.preventDefault();
+  
+        setLoading(true);
+        setIsError(false); //additional
+  
+  
+        const formData = new FormData();
+        formData.append('photo', newUser.photo);
+        formData.append('address', newUser.address);
+        formData.append('phone', newUser.phone);
+        formData.append('email', newUser.email);
+        formData.append('name', newUser.name);
+        formData.append('age', newUser.age);
+        formData.append('gender', newUser.gender);
+  
+        axios.post('http://localhost:8070/customer/add', formData)
+             .then(res => {
+                console.log(res);
+                setLoading(false);
+                setNewUser({name :'' , age : '' , gender : '' , address : '' , photo : '' , email:'', phone:''})
+                toast("Success! Customer Added")
+             })
+             .catch(err => {
+                console.log(err);
+                setLoading(false);
+                setIsError(true);
+                toast("Error! Customer not Added Duplicate Key Found: Email must be unique")
+             });
+        
+    }
+  
+    const handleChange = (e) => {
+        setNewUser({...newUser, [e.target.name]: e.target.value});
+    }
+  
+    const handlePhoto = (e) => {
+        setNewUser({...newUser, photo: e.target.files[0]});
+    }
+  
+    //dynamic search box
+    const [myOptions, setMyOptions] = useState([])
+  
+  const getDataFromAPI = () => {
+    console.log("Options Fetched from API")
+  
+    axios.get('http://localhost:8070/customer').then((response) => {
+      return response.json()
+    }).then((res) => {
+      console.log(res.data)
+      for (var i = 0; i < res.data.length; i++) {
+        myOptions.push(res.data[i].customer_name)
+      }
+      setMyOptions(myOptions)
+    })
+  }
+  
 
 
   return (
@@ -37,31 +111,59 @@ function Cus() {
 
 
 
-          <div class="grid grid-cols-6 gap-6">
+          <div class="grid grid-cols-6 " onSubmit={handleSubmit} encType='multipart/form-data'>
               <div class="col-span-6 sm:col-span-3">
                   <label for="first-name" class="text-sm font-medium text-gray-900 block mb-2">First Name</label>
-                  <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Bonnie" required></input>
+                  <input type="text" value={newUser.name} onChange={handleChange} required pattern="[A-Za-z]+" name="name"  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Bonnie" ></input>
               </div>
               <div class="col-span-6 sm:col-span-3">
                   <label for="last-name" class="text-sm font-medium text-gray-900 block mb-2">Last Name</label>
-                  <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Green" required></input>
+                  <input type="text"  value={newUser.age}  onChange={handleChange} required pattern="[1-9]{1,3}" name="age"  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Green" ></input>
               </div>
               <div class="col-span-6 sm:col-span-3">
                   <label for="email" class="text-sm font-medium text-gray-900 block mb-2">Email</label>
-                  <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="example@company.com" required></input>
+                  <input type="email" value={newUser.gender}  onChange={handleChange} required pattern="[A-Za-z]+" name="gender"  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="example@company.com"></input>
               </div>
               <div class="col-span-6 sm:col-span-3">
                   <label for="phone-number" class="text-sm font-medium text-gray-900 block mb-2">Phone Number</label>
-                  <input type="number" name="phone-number" id="phone-number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="e.g. +(12)3456 789" required></input>
+                  <input type="number" value={newUser.address}  onChange={handleChange} required  name="address"  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="e.g. +(12)3456 789" ></input>
               </div>
               <div class="col-span-6 sm:col-span-3">
                   <label for="department" class="text-sm font-medium text-gray-900 block mb-2">Department</label>
-                  <input type="text" name="department" id="department" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Development" required></input>
+                  <input type="text" value={newUser.phone}  onChange={handleChange} required pattern = "[0-9]{10}" name="phone"  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Development"></input>
               </div>
               <div class="col-span-6 sm:col-span-3">
                   <label for="company" class="text-sm font-medium text-gray-900 block mb-2">Company</label>
-                  <input type="number" name="company" id="company" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="123456" required></input>
+                  <input type="number"  value={newUser.email}   onChange={handleChange} required pattern = "[0-9a-zA-Z%&$@.]+@[a-zA-Z]+\.+[a-zA-Z]{2,3}" name="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" ></input>
               </div>
+              <div className="jumbotron" style={{textAlign:"center"}}>
+                <h1 className="display-4" style={{color:"black"}}>Upload a Photo of Customer</h1>
+               
+                <hr className="my-4" />
+            </div>
+            <div style={{textAlign:"center"}}>
+              <i class="fa fa-folder-open" aria-hidden="true" style={{color:"red"}}></i>
+              <input 
+                  type="file" 
+                  accept=".png, .jpg, .jpeg"
+                  name="photo"
+                  onChange={handlePhoto} required style={{color:"white" , backgroundColor:"black"}}
+              />
+            </div>
+
+            <br/>
+              <div style={{textAlign:"center"}}>
+                     {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
+                     {/*decision*/}
+                     <button
+                        type="submit"
+                        className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                        disabled={loading}
+                        ><i class="fa fa-upload" aria-hidden="true"></i> {loading ? 'Uploading...' : 'Upload'}
+                     </button>
+                     <ToastContainer style={{marginTop:"50px"}}/>
+                    
+            </div>
           </div></div>
 
       </></>

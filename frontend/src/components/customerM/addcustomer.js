@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import Logo2 from "../../img/Logo-2.png"
-import customer from "../../img/customer.png"
+
 
 
 
@@ -13,6 +13,7 @@ const Addcustomer = () =>{
   const [loading, setLoading] = useState(false); //additional 
   const [isError, setIsError] = useState(false);
   const [listOfUsers, setListOfUsers] = useState([]);
+
 
     useEffect((id) => {
         axios.get(`http://localhost:8070/customer/user/${id}`).then((response) => {
@@ -67,7 +68,10 @@ const Addcustomer = () =>{
   }
 
   const handleChange = (e) => {
-      setNewUser({...newUser, [e.target.name]: e.target.value});
+      setNewUser({...newUser, [e.target.name]: e.target.value});  
+      
+     
+      
   }
 
   const handlePhoto = (e) => {
@@ -91,7 +95,9 @@ const getDataFromAPI = () => {
   })
 }
 
-  
+function refreshPage() {
+  window.location.reload(false);
+}
 
 
   return (
@@ -120,10 +126,10 @@ const getDataFromAPI = () => {
    
   </div>
 </header>
-<img src={customer} className="bg-gradient-to-bl md:h-full md:w-full absolute mt-20" />
+
         <div className="grid min-h-screen place-items-center "  ><br/><br/>
-       
-            <form onSubmit={handleSubmit} encType='multipart/form-data'  className="w-11/12 p-12  sm:w-8/12 md:w-1/2 lg:w-5/12 mt-36 absolute"><br />
+            <form onSubmit={handleSubmit} encType='multipart/form-data'  className="w-11/12 p-12  sm:w-8/12 md:w-1/2 lg:w-5/12 mt-36 bg-gray-200 "><br />
+            
             <div className="">
 
             <div class="">Name
@@ -186,8 +192,12 @@ const getDataFromAPI = () => {
             </div>
 
             <br/>
+            
             <div style={{textAlign:"center"}}>
-                     {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
+             <button onClick={refreshPage} type="button" data-modal-toggle="delete-user-modal" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+        Clear
+   </button>  
+                     {isError && <small className="mt-3 d-inline-block text-danger"><br/>Something went wrong. Please try again later.</small>}
                      {/*decision*/}
                      <button
                         type="submit"
@@ -198,6 +208,7 @@ const getDataFromAPI = () => {
                      <ToastContainer style={{marginTop:"50px"}}/>
                     
             </div>
+            
         </form>
         <br/>
         <br/><br/><br/><br/><br/><br/>

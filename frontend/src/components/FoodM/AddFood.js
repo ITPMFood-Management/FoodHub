@@ -2,7 +2,7 @@ import React,{useState} from "react"
 import './AddFood.css';
 import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
-
+import Logo2 from "../../img/Logo-2.png"
 
 
 
@@ -15,7 +15,9 @@ export default function AddFood(){
       const[Foodstatus, setfoodstatus]=useState("");
       const[ExpDate, setexpDate]=useState("");
       const[MFDDate, setmFDDate]=useState("");
-   
+      const[Image, setimage]=useState("");
+
+
       function sendData(e){
         e.preventDefault();
        
@@ -26,10 +28,21 @@ export default function AddFood(){
           Foodcatergory,
           Foodstatus,
           ExpDate,
-          MFDDate
+          MFDDate,
+          Image
         }
 
-       axios.post("http://localhost:8070/food/create",newFood).then(()=>{
+        const formData = new FormData();
+        formData.append('Foodcode', Foodcode);
+        formData.append('Foodname', Foodname);
+        formData.append('Itemprice', Itemprice);
+        formData.append('Foodcatergory', Foodcatergory);
+        formData.append('Foodstatus', Foodstatus);
+        formData.append('ExpDate',  ExpDate);
+        formData.append('MFDDate', MFDDate);
+        formData.append('Image', Image);
+
+       axios.post("http://localhost:8070/food/create", formData).then(()=>{
          alert("food added")
           setfoodcode("");
           setfoodname("");
@@ -38,12 +51,15 @@ export default function AddFood(){
           setfoodstatus("");
           setexpDate("");
           setmFDDate("");
+          setimage("");
+          document.getElementById('formFile').value= null;
        }).catch((err)=>{
          alert(err)
        })
 
       }
-
+     
+  
   
 
 
@@ -51,13 +67,40 @@ export default function AddFood(){
    
 
 return(
- 
+  
+ <div>
+ <header class="text-gray-400  body-font  fixed">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">
+    <a href="/home" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+      <img src={Logo2} className="w-12" />
+      <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
+    </a>
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
+      <a href="/cus" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
+      <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Account List</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
+    </nav>
+   {/* <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div>  */}
+
+  
+
+   <a href="/signin"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Log Out
+     
+    <ion-icon name="person-circle-outline"></ion-icon>
+    
+    </button></a>
+   
+  </div>
+</header>
+ <br></br>
+ <br></br>
 <div className="AddFoodContainer px-24 flex items-center">
  
-<form className="w-full max-w-lg" onSubmit={sendData}>
- <br></br>
- <br></br>
- <br></br> 
+<form className="w-full max-w-lg" onSubmit={sendData} encType='multipart/form-data'>
+<h1 className="text-4xl font-normal leading-normal mt-0 mb-2  text-center text-gray-700">
+  Add Food
+</h1>
 <div className="flex flex-wrap -mx-3 mb-1">
     <div className="w-full px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-fcode">
@@ -66,10 +109,11 @@ return(
       <input type="text" 
        id="grid-fcode" 
        name="Foodcode" 
+      //  required pattern=""
        value={Foodcode}
-       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" 
        placeholder="Enter the Food Code"
-       
+      
        onChange={(e)=>{
         setfoodcode(e.target.value); 
        }} 
@@ -83,9 +127,10 @@ return(
       </label>
       <input type="text" 
       id="grid-fName" 
-      name="Foodname"  
+      name="Foodname"
+      required="required"
       value={Foodname}
-      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
+      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700"  
       placeholder="Enter the Food Name" 
      
       onChange={(e)=>{
@@ -104,7 +149,7 @@ return(
        id="grid-fprice"  
        name="Itemprice" 
        value={Itemprice}
-       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
+       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700"  
        placeholder="Enter the Food Price" 
        onChange={(e)=>{
        setitemprice(e.target.value); 
@@ -125,14 +170,14 @@ return(
         name="Foodcatergory"
         defaultValue={Foodcatergory}
         value={Foodcatergory}  
-        className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-1 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-700"
         onChange={(e)=>{
         setfoodcatergory(e.target.value); 
             }} 
         >  <option value="" disabled selected>Select your option</option>
-          <option>Breakfast</option>
-          <option>Lunch</option>
-          <option>Dinner</option>
+          <option>Sri Lankan</option>
+          <option>Indian</option>
+          <option></option>
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
         <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg> 
@@ -152,7 +197,7 @@ return(
         name="Foodstatus"
         defaultValue={Foodstatus}
         value={Foodstatus}  
-        className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-1  rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-700"
         onChange={(e)=>{
         setfoodstatus(e.target.value); 
           }} 
@@ -179,14 +224,14 @@ return(
   <input type="date" 
   name=" ExpDate" 
   value={ExpDate}  
-  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 mb-1 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-700" 
   placeholder="Select date" 
   onChange={(e)=>{
   setexpDate(e.target.value); 
       }} 
   />
 </div>
-<br></br>
+
 <div className="relative">
    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
    MFDDate:
@@ -197,7 +242,7 @@ return(
   <input type="date"  
   name="MFDDate"
   value={MFDDate}   
-  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 mb-1 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-700" 
   placeholder="Select date"
   onChange={(e)=>{
   setmFDDate(e.target.value); 
@@ -205,10 +250,23 @@ return(
   />
 </div>
 
+ <div class="relative">
+  <div class="mb-3 w-96">
+    <label for="formFile" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Upload the Food image:</label>
+    <input className="form-control
+    appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded pr-8 py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" type="file" id="formFile"
+    onChange={(e)=>{
+      
+      setimage(e.target.files[0]); 
+            }} 
+    />
+  </div>
+</div> 
+
 <div className="md:flex md:items-center">
     <div className="md:w-1/3"></div>
     <div className="md:w-2/3">
-      <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-4 rounded" type="submit">
+      <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
         Submit
       </button>
     </div>
@@ -223,6 +281,7 @@ return(
 
 
 
+</div>
 </div>
 
     )

@@ -32,6 +32,9 @@ const Food = new Schema({
         type:Date,
         
     },
+    Image:{
+        type:String,
+    }
 
     });
 

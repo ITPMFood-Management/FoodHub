@@ -1,8 +1,7 @@
 import React from "react";
-import Logo from "./img/Logo.png"
 
 import { useState} from "react";
-import {Pie, Doughnut} from 'react-chartjs-2';
+import {Pie} from 'react-chartjs-2';
 
 
 const Home = () => {

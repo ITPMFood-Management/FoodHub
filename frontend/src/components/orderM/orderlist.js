@@ -24,7 +24,7 @@ export default function OrderList(){
     const handleRemove =(id) =>{
 
      axios.delete(`http://localhost:8070/orders/delete/${id}`).then((res)=>{
-         console.log("delete succes");
+         console.log("delete success");
          
          })
        }

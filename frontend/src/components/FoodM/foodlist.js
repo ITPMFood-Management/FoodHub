@@ -46,7 +46,7 @@ console.log(listOfFood);}
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
       <a href="/addfood" class="mr-5 hover:text-red-700 duration-500 ">Add Food</a>
       <a href="/foodlist" class="mr-5 hover:text-red-700 duration-500">Food List</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Update Food Details</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Update Food Details </a>
       <a href="" class="mr-5 hover:text-red-700 duration-500"></a>
     </nav>
    {/* <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div>  */}

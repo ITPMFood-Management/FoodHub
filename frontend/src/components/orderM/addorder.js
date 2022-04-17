@@ -28,12 +28,16 @@ export default function AddOrder(){
       },
     };
 
-  
+    const value ={customername, phoneNumber, address, category, itemnumber, quantity}
+    if(value.phoneNumber.length<10){
+      alert("pahapan hari number aka yako!!")
+      e.preventDefault();
+    }
+    else{
     try {
       //exception handling
       var { data } = await axios.post(
-        "http://localhost:8070/orders/create",
-        { customername, phoneNumber, address, category, itemnumber, quantity  },
+        "http://localhost:8070/orders/create",value,
         config
       );
       toast("Success! Added 😘");
@@ -47,6 +51,7 @@ export default function AddOrder(){
       toast(`Error! ${error?.response?.data?.error}`);
       setTimeout(() => {}, 5000); //5s
     }
+  }
   };
   
   
@@ -125,11 +130,28 @@ return(
   </label>
   <input type="number" 
  
+//  rules={[
+
+//   { required: true, message: "Please input your Phone Number!" },
+  
+//   {
+  
+//   min: 10,
+  
+//   message: "Phone Number must be minimum 10 characters.",
+  
+//   },
+  
+//   {max: 10 },
+  
+//   ]}
+
   id="grid-ophone" 
   name="phoneNumber"  
+
   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
   placeholder="Enter the Contact Number" 
-  required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"
+  // required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"
   value={phoneNumber}
   onChange={(e)=>{
   setPhoneNumber(e.target.value); 

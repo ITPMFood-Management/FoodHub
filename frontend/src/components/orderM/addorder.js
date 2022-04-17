@@ -30,7 +30,7 @@ export default function AddOrder(){
 
     const value ={customername, phoneNumber, address, category, itemnumber, quantity}
     if(value.phoneNumber.length<10){
-      alert("pahapan hari number aka yako!!")
+      alert("Phone Number must be minimum 10 characters... or Enter a valid contact Number")
       e.preventDefault();
     }
     else{
@@ -53,6 +53,17 @@ export default function AddOrder(){
     }
   }
   };
+
+  const Clear= ()=>{
+
+      setCustomername("");
+      setPhoneNumber("");
+      setAddress("");
+      setCategory("");
+      setItemnumber("");
+      setQuantity("");
+  
+  }
   
   
 
@@ -258,6 +269,11 @@ return(
   <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-4 rounded" type="submit">
     Submit
   </button>
+
+  <button onClick={Clear} className="btn shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-4 rounded md:items-left" type="submit">
+    Clear
+  </button>
+
 </div>
 </div>
 

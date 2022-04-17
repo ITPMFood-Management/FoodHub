@@ -96,10 +96,10 @@ return(
       <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-      <a href="/addDelivery" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
-      <a href="/Viewdelivery" class="mr-5 hover:text-red-700 duration-500">Account List</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
+      <a href="/addfood" class="mr-5 hover:text-red-700 duration-500 ">Add Food</a>
+      <a href="/foodlist" class="mr-5 hover:text-red-700 duration-500">Food List</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Update Food Details</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500"></a>
     </nav>
    {/* <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div>  */}
 
@@ -119,7 +119,7 @@ return(
 <br></br>
 <br></br>
 <div class=" z-10 flex justify-center">
-<form className="w-11/12 p-12 bg-gray-50 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20" onSubmit={sendData} encType='multipart/form-data'>
+<form className="w-11/12 p-12 bg-green-200 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20" onSubmit={sendData} encType='multipart/form-data'>
 <h1 className="text-4xl font-normal leading-normal mt-0 mb-2  text-center text-gray-700">
   Add Food
 </h1>
@@ -294,11 +294,11 @@ return(
     <div className="md:w-1/3"></div>
     <div className="md:w-2/3">
 
-    <a href='/FoodList'>
-      <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
+    
+      <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
         Submit
-      </button></a>
-      <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center ml-5">
+      </button>  
+      <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded">
        
        Clear
    </button>  

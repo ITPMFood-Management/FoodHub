@@ -8,24 +8,26 @@ import Logo2 from "../../img/Logo-2.png"
 
 export default function OrderList(){
   
-  const [listOfOrders, setListOfOrders] = useState([]);
+  const[listOfUsers,setlistOfUsers]=useState([]);
 
-  useEffect(() => {
-      axios.get("http://localhost:8070/orders").then((response) => {
-        setListOfOrders(response.data);
-      });
-    }, []);
-    
+    useEffect(()=>{
+        retrievePosts()
+    },[listOfUsers])
+
+   const retrievePosts=()=>{
+        axios.get("http://localhost:8070/orders").then(res =>{
+           setlistOfUsers(res.data)
+     
+        })
+    console.log(listOfUsers);}
+
     const handleRemove =(id) =>{
 
-      axios.delete(`http://localhost:8070/orders/delete/${id}`).then((res)=>{
-          console.log("Delete Success");
-          
-          })
-        }
-     
-   
-    
+     axios.delete(`http://localhost:8070/orders/delete/${id}`).then((res)=>{
+         console.log("delete success");
+         
+         })
+       }
 
 
 
@@ -101,7 +103,7 @@ export default function OrderList(){
                                        </th>
                                    </tr>
                                </thead>
-                               <tbody class="bg-white divide-y divide-gray-200"> {listOfOrders.map((user) => (
+                               <tbody class="bg-white divide-y divide-gray-200"> {listOfUsers.map((user) => (
 
 <tr class="hover:bg-gray-100">
     <td class="p-4 w-4">

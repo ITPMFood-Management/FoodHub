@@ -1,10 +1,16 @@
 import React,{useEffect,useState} from "react";
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import moment from 'moment';
 
 
-const Updatedelivery = () => {
 
-  const[name,setName]=useState('dg')
+
+
+
+const Updatedelivery = (props) => {
+
+  const[name,setName]=useState('')
   const[age,setAge]=useState('')
   const[workdate,setworkDate]=useState('')
   const[birthday,setbirthDate]=useState('')
@@ -12,14 +18,35 @@ const Updatedelivery = () => {
   const[phonenumber,setPhonenumber]=useState('')
   const[email,setEmail]=useState('')
   const[details,setDetails]=useState([]);
+  const params = useParams()
+  
 
+  // yuo can find all params from here
 
+  
   useEffect(()=>{
   
-    console.log("fff");
+    getData();
      
-  })
+  },[])
+  const getData=()=>{
+  
 
+    axios.get(`http://localhost:8070/delivery/get/${params.id}`).then(res=>{
+      console.log(res.data)
+      setName(res.data.name)
+      setAge(res.data.age)
+      setEmail(res.data.email)
+      setbirthDate(moment(res.data.birthDate).format("MMM DD ,YYYY"))
+      setPhonenumber(res.data.phoneNumber)
+      setworkDate(moment(res.data.workDate).format("MMM DD ,YYYY"))
+      setAddress(res.data.address)
+    }) 
+    .then((res)=>{
+      console.log(res.data);
+    }) 
+  }
+ 
   const submit=()=>{
     const data={
       name: name,
@@ -30,9 +57,9 @@ const Updatedelivery = () => {
       birthDate:birthday,
       workDate:workdate
     }
- /*  axios.post(`http://localhost:8070/delivery/update/${id}`, data).then(res=>{
+ axios.put(`http://localhost:8070/delivery/update/${params.id}`, data).then(res=>{
     console.log(res);
-  })  */
+  }) 
   }
   const Clear= ()=>{
     setName("")
@@ -63,7 +90,9 @@ const Updatedelivery = () => {
     
   
     return (
-        <div><form className="w-11/12 p-12 bg-gray-50 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20">
+        <div>
+           <div class=" flex justify-center">
+          <form className="w-11/12 p-12 bg-gray-50 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20">
         <div className="">
 
         <div class="">Name
@@ -114,11 +143,11 @@ const Updatedelivery = () => {
 
         </div>
 
-        
+        <a href="/viewDelivery">
         <button onClick={submit} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
        
                                               Submit
-                                          </button>  
+                                          </button>  </a>
 
                                           <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
        
@@ -127,6 +156,7 @@ const Updatedelivery = () => {
         
     
     </form>
+    </div>
 </div>
     )
       

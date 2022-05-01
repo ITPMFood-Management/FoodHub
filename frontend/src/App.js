@@ -22,8 +22,8 @@ import OrderList from "./components/orderM/orderlist"
 
 import FoodList from "./components/FoodM/foodlist";
 // import CUSTOMERFOOD from "./components/FoodM/customerfood";
-
-
+import Updatefood from "./components/FoodM/Updatefood";
+import Orders from "./components/FoodM/orders";
 
 
 
@@ -63,8 +63,8 @@ const App = () => {
         <Route path="/addfood"     element={<AddFood/>}/>
         <Route path="/foodlist"   element={<FoodList/>}/>
         {/* <Route path="/customerfood" element={<CUSTOMERFOOD/>}/> */}
-
-      
+        <Route path="/updatefood/:id"   element={<Updatefood/>}/>
+        <Route path="/orders"           element={<Orders/>}/>
         </Routes>
         <br></br>
         <br></br>

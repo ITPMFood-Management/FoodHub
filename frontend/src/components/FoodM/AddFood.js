@@ -7,82 +7,82 @@ import Swal from "sweetalert2";
 
 
 export default function AddFood(){
+  
+  const[Foodcode, setfoodcode]=useState("");
+  const[Foodname, setfoodname]=useState("");
+  const[Itemprice, setitemprice]=useState("");
+  const[Foodcatergory, setfoodcatergory]=useState("");
+  const[Foodstatus, setfoodstatus]=useState("");
+  const[ExpDate, setexpDate]=useState("");
+  const[MFDDate, setmFDDate]=useState("");
+  const[Image, setimage]=useState("");
+
+
+  function sendData(e){
+    e.preventDefault();
+   
+    const newFood ={
+      Foodcode,
+      Foodname,
+      Itemprice,
+      Foodcatergory,
+      Foodstatus,
+      ExpDate,
+      MFDDate,
+      Image
+    }
+
+    const formData = new FormData();
+    formData.append('Foodcode', Foodcode);
+    formData.append('Foodname', Foodname);
+    formData.append('Itemprice', Itemprice);
+    formData.append('Foodcatergory', Foodcatergory);
+    formData.append('Foodstatus', Foodstatus);
+    formData.append('ExpDate',  ExpDate);
+    formData.append('MFDDate', MFDDate);
+    formData.append('Image', Image);
+
+   axios.post("http://localhost:8070/food/create", formData).then(()=>{
+    //  alert("food added")
+      setfoodcode("");
+      setfoodname("");
+      setitemprice("");
+      setfoodcatergory("");
+      setfoodstatus("");
+      setexpDate("");
+      setmFDDate("");
+      setimage("");
+      document.getElementById('formFile').value= null;
+   }).catch((err)=>{
+     alert(err)
+   })
  
-      const[Foodcode, setfoodcode]=useState("");
-      const[Foodname, setfoodname]=useState("");
-      const[Itemprice, setitemprice]=useState("");
-      const[Foodcatergory, setfoodcatergory]=useState("");
-      const[Foodstatus, setfoodstatus]=useState("");
-      const[ExpDate, setexpDate]=useState("");
-      const[MFDDate, setmFDDate]=useState("");
-      const[Image, setimage]=useState("");
-
-
-      function sendData(e){
-        e.preventDefault();
-       
-        const newFood ={
-          Foodcode,
-          Foodname,
-          Itemprice,
-          Foodcatergory,
-          Foodstatus,
-          ExpDate,
-          MFDDate,
-          Image
-        }
-
-        const formData = new FormData();
-        formData.append('Foodcode', Foodcode);
-        formData.append('Foodname', Foodname);
-        formData.append('Itemprice', Itemprice);
-        formData.append('Foodcatergory', Foodcatergory);
-        formData.append('Foodstatus', Foodstatus);
-        formData.append('ExpDate',  ExpDate);
-        formData.append('MFDDate', MFDDate);
-        formData.append('Image', Image);
-
-       axios.post("http://localhost:8070/food/create", formData).then(()=>{
-        //  alert("food added")
-          setfoodcode("");
-          setfoodname("");
-          setitemprice("");
-          setfoodcatergory("");
-          setfoodstatus("");
-          setexpDate("");
-          setmFDDate("");
-          setimage("");
-          document.getElementById('formFile').value= null;
-       }).catch((err)=>{
-         alert(err)
-       })
-     
-       Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      
+   Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'food added',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  
 }
 
-const Clear= ()=>{
-  setfoodcode("");
-  setfoodname("");
-  setitemprice("");
-  setfoodcatergory("");
-  setfoodstatus("");
-  setexpDate("");
-  setmFDDate("");
-  setimage("");
-  
+// const Clear= ()=>{
+// setfoodcode("");
+// setfoodname("");
+// setitemprice("");
+// setfoodcatergory("");
+// setfoodstatus("");
+// setexpDate("");
+// setmFDDate("");
+// setimage("");
 
+
+// }
+
+function refreshPage() {
+  window.location.reload(false);
 }
-  
-  
-
-
  
    
 
@@ -203,7 +203,9 @@ return(
         </div>
           <option>Sri Lankan</option>
           <option>Indian</option>
-          <option></option>
+          <option>china</option>
+          <option>Italy</option>
+          <option>Pakistan</option>
         </select>
         
        
@@ -283,8 +285,8 @@ return(
     <input className="form-control
     appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded pr-8 py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" type="file" id="formFile"
     onChange={(e)=>{
-      
-      setimage(e.target.files[0]); 
+  //  setimage(e.target.value);   
+    setimage(e.target.files[0]); 
             }} 
     />
   </div>
@@ -298,7 +300,7 @@ return(
       <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
         Submit
       </button>  
-      <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded">
+      <button onClick={refreshPage} type="button" data-modal-toggle="delete-user-modal" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-5 ml-5 rounded">
        
        Clear
    </button>  

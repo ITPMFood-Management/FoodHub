@@ -37,7 +37,6 @@ const Home = () => {
   //       data: [20, 59, 80, 81, 56]
   //     }
   //   ]
- // }
 
   return (
     
@@ -200,8 +199,7 @@ const Home = () => {
               position:'right'
             }
           }}
-        />
-  */}
+
 </section>
 
   );

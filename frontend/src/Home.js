@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useState} from "react";
-import {Pie} from 'react-chartjs-2';
+//import {Pie} from 'react-chartjs-2';
 
 
 const Home = () => {
@@ -37,7 +37,6 @@ const Home = () => {
   //       data: [20, 59, 80, 81, 56]
   //     }
   //   ]
-  // }
 
   return (
     
@@ -200,8 +199,7 @@ const Home = () => {
               position:'right'
             }
           }}
-        /> */}
- 
+
 </section>
 
   );

@@ -41,3 +41,4 @@ app.use('/delivery',delivery)
 
 app.use('/orders',require('./BACKEND/routes/order'))
 
+app.use('/complaints',require('./BACKEND/routes/complaint'))

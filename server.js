@@ -41,4 +41,7 @@ app.use('/food',require('./BACKEND/routes/Food'))
 
 app.use('/orders',require('./BACKEND/routes/order'))
 
+
 const delivery=require('./BACKEND/routes/delivery');
+app.use('/complaints',require('./BACKEND/routes/complaint'))
+

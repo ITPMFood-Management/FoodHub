@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useState} from "react";
-import {Pie} from 'react-chartjs-2';
+//import {Pie} from 'react-chartjs-2';
 
 
 const Home = () => {
@@ -13,6 +13,7 @@ const Home = () => {
     
   ];
   let [open,setOpen]=useState(false);
+
 
 
   return (
@@ -163,8 +164,10 @@ const Home = () => {
       </div>
     </div>
   </div>
+
  
- 
+
+
 </section>
 
   );

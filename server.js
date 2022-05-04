@@ -44,4 +44,4 @@ app.use('/orders',require('./BACKEND/routes/order'))
 
 const delivery=require('./BACKEND/routes/delivery');
 app.use('/complaints',require('./BACKEND/routes/complaint'))
-
+app.use("/api/auth",require("./BACKEND/routes/auth"))

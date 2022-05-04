@@ -1,8 +1,17 @@
 import React from 'react';
-import Logo2 from "../img/Logo-2.png"
-import food from "../img/food.jpg"
+import Logo2 from "../../img/Logo-2.png"
+import food from "../../img/food.jpg"
+import { useNavigate} from "react-router-dom";
 
-function Foodhub() {
+function Userpage() {
+    const history = useNavigate();
+
+    const logoutHandler = () => {
+        localStorage.removeItem("username");
+        localStorage.removeItem("authTaken");
+      
+        history("/");
+      };
   return (
     <><header class="text-gray-400  body-font  ">
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">
@@ -17,11 +26,12 @@ function Foodhub() {
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>
 
-   <a href="/Login"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Sign in/Register
+ <span className='mr-3'>Hello {localStorage.getItem("username")}</span>
+ <a href="/" className='mr-3'><button>Log out ?</button></a>
      
-    <ion-icon name="person-circle-outline"></ion-icon>
+  
     
-    </button></a>
+    
     <a href=""><div className="text-4xl mr-5 mt-2 hover:text-red-700 duration-500 "><ion-icon  name="cart-outline"></ion-icon></div>  </a>
   </div>
 </header>
@@ -115,4 +125,4 @@ function Foodhub() {
   )
 }
 
-export default Foodhub
+export default Userpage

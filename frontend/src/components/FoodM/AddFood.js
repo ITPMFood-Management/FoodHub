@@ -131,7 +131,7 @@ return(
       <input type="text" 
        id="grid-fcode" 
        name="Foodcode" 
-      //  required pattern=""
+       required="required"
        value={Foodcode}
        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" 
        placeholder="Enter the Food Code"
@@ -171,6 +171,7 @@ return(
        id="grid-fprice"  
        name="Itemprice" 
        value={Itemprice}
+       required="required"
        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700"  
        placeholder="Enter the Food Price" 
        onChange={(e)=>{
@@ -189,6 +190,7 @@ return(
         <select 
         id="grid-fcatergory" 
         name="Foodcatergory"
+        required="required"
         defaultValue={Foodcatergory}
         value={Foodcatergory}  
         className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-1 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-700"
@@ -224,6 +226,7 @@ return(
         <select  
         id="grid-fstatus" 
         name="Foodstatus"
+        required="required"
         defaultValue={Foodstatus}
         value={Foodstatus}  
         className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-1  rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-700"
@@ -251,7 +254,8 @@ return(
     
   </div>
   <input type="date" 
-  name=" ExpDate" 
+  name=" ExpDate"
+  required="required"
   value={ExpDate}  
   className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 mb-1 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-700" 
   placeholder="Select date" 
@@ -270,6 +274,7 @@ return(
   </div>
   <input type="date"  
   name="MFDDate"
+  required="required"
   value={MFDDate}   
   className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 mb-1 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-700" 
   placeholder="Select date"

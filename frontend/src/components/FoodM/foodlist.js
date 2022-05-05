@@ -72,10 +72,34 @@ console.log(listOfFood);}
                          <h1 className="text-3xl text-black mt-28 text-center mb-6 ">All foods</h1>
                          <br></br>
                          <br></br>
+                         <div class="flex justify-center">
+  <div class="mb-3 xl:w-96">
+    <input
+      type="search"
+      class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      "
+      id="exampleSearch"
+      placeholder="Type query"
+    />
+  </div>
+</div>
+                         
+
+
+
+
+
+
+
+
+                         
                          <button class="float-right bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-4 ml-6 mr-9 rounded inline-flex items-center">
- <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
- <span>Download Report</span>
-</button>
+                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+                       <span>Download Report</span>
+                        </button>
                                 <table class="table-fixed min-w-full divide-y divide-gray-200 ">
                                <thead class="bg-gray-100">
                                    <tr>

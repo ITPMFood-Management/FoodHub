@@ -2,6 +2,7 @@ import React,{useState} from "react"
 import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
 import Logo2 from "../../img/Logo-2.png"
+import {  toast } from 'react-toastify';
 //import Swal from "sweetalert2";
 
 
@@ -12,24 +13,37 @@ export default function AddComplaint(){
   const [email, setEmail] = useState("");
 
 
-  function sendData(e){
+
+  const handleSubmit = async (e) => {
+    //logic for adding data to the BACKENDe
     e.preventDefault();
-   
-    const newComplaint ={
-      ctype,
-      description,
-      email
-    }
 
-    const formData = new FormData();
-    formData.append('ctype', ctype);
-    formData.append('description', description);
-    formData.append('email', email);
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-   axios.post("http://localhost:8070/complaints/create", formData).then(()=>{
+    const value ={ctype, description, email}
+  
+    try {
+      //exception handling
+      var { data } = await axios.post(
+        "http://localhost:8070/complaints/create",value,
+        config
+      );
+      toast("Success! Added 😘");
       setCtype("");
       setDescription("");
       setEmail("");
+
+      
+    } catch (error) {
+      toast(`Error! ${error?.response?.data?.error}`);
+      setTimeout(() => {}, 5000); //5s
+    }
+  }
+
       document.getElementById('formFile').value= null;
    }).catch((err)=>{
      alert(err)
@@ -42,8 +56,8 @@ export default function AddComplaint(){
   //   showConfirmButton: false,
   //   timer: 1500
   // })
+
   
-}
 
 function refreshPage() {
   window.location.reload(false);
@@ -81,7 +95,7 @@ return(
 <br></br>
 <br></br>
 <div class=" z-10 flex justify-center">
-<form className="w-11/12 p-12 bg-green-200 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20" onSubmit={sendData} encType='multipart/form-data'>
+<form className="w-11/12 p-12 bg-green-200 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20" onSubmit={handleSubmit} encType='multipart/form-data'>
 <h1 className="text-4xl font-normal leading-normal mt-0 mb-2  text-center text-gray-700">
   Add Complaints
 </h1>

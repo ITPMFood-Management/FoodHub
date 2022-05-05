@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React,{useState, useEffect} from "react"
 import axios from "axios";
 import Logo2 from "../../img/Logo-2.png"
@@ -301,3 +302,5 @@ const UpdateOrder = (props) => {
 
 
 
+=======
+>>>>>>> 35d95c92ce97fde7dc13ac37436dc15c80ab9d8b

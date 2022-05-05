@@ -42,13 +42,7 @@ export default function AddComplaint(){
       toast(`Error! ${error?.response?.data?.error}`);
       setTimeout(() => {}, 5000); //5s
     }
-  }
-
-      document.getElementById('formFile').value= null;
-   }).catch((err)=>{
-     alert(err)
-   })
- 
+  } 
   //  Swal.fire({
   //   position: 'top-end',
   //   icon: 'success',
@@ -61,9 +55,7 @@ export default function AddComplaint(){
 
 function refreshPage() {
   window.location.reload(false);
-}
- 
-   
+}  
 
 return(
   
@@ -78,7 +70,6 @@ return(
       <a href="/addorder" class="mr-5 hover:text-red-700 duration-500 ">Add Order</a>
       <a href="/orderlist" class="mr-5 hover:text-red-700 duration-500">Order List</a>
       <a href="/addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
-      <a href="addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>
 
@@ -183,4 +174,4 @@ return(
 </div>
 
      )
-}
+      }

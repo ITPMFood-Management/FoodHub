@@ -44,8 +44,12 @@ export default function OrderList(){
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
       <a href="/addorder" class="mr-5 hover:text-red-700 duration-500 ">Add Order</a>
       <a href="/orderlist" class="mr-5 hover:text-red-700 duration-500">Order List</a>
+<<<<<<< HEAD
+      <a href="/addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
+=======
       <a href="addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
+>>>>>>> 35d95c92ce97fde7dc13ac37436dc15c80ab9d8b
     </nav>
    
   
@@ -61,6 +65,9 @@ export default function OrderList(){
 
 <br></br>
 <br></br>
+<br></br>
+<br></br>
+<br></br>
 
 
       <div className="usersDisplay">
@@ -70,9 +77,13 @@ export default function OrderList(){
                <div class="overflow-x-auto">
                    <div class="align-middle inline-block min-w-full">
                        <div class="shadow overflow-hidden">
-                         <h1 className="text-center ">All Orders</h1>
-                         <br></br>
-                         <br></br>
+                         <h1 className="text-center "><b>All Orders</b></h1>
+
+                         <button class="float-right bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-4 ml-6 mr-9 rounded inline-flex items-center">
+                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+                       <span>Download Report</span>
+                        </button>
+
                            <table class="table-fixed min-w-full divide-y divide-gray-200 ">
                                <thead class="bg-gray-100">
                                    <tr>

@@ -80,7 +80,7 @@ return(
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
       <a href="/addorder" class="mr-5 hover:text-red-700 duration-500 ">Add Order</a>
       <a href="/orderlist" class="mr-5 hover:text-red-700 duration-500">Order List</a>
-      <a href="addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
+      <a href="/addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>
    

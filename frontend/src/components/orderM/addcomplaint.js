@@ -30,7 +30,7 @@ export default function AddComplaint(){
       setCtype("");
       setDescription("");
       setEmail("");
-      document.getElementById('formFile').value= null;
+      // document.getElementById('formFile').value= null;
    }).catch((err)=>{
      alert(err)
    })
@@ -63,7 +63,7 @@ return(
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
       <a href="/addorder" class="mr-5 hover:text-red-700 duration-500 ">Add Order</a>
       <a href="/orderlist" class="mr-5 hover:text-red-700 duration-500">Order List</a>
-      <a href="addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
+      <a href="/addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>
 
@@ -85,7 +85,7 @@ return(
 <h1 className="text-4xl font-normal leading-normal mt-0 mb-2  text-center text-gray-700">
   Add Complaints
 </h1>
-<div className="flex flex-wrap -mx-3 mb-1">
+{/* <div className="flex flex-wrap -mx-3 mb-1">
     <div className="w-full px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-ctype">
        Complaint Type:
@@ -103,7 +103,29 @@ return(
        }} 
        />     
     </div>
+  </div> */}
+
+  <div className="flex flex-wrap -mx-3 mb-1">
+    <div className="w-full px-3">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-ctype">
+       Complaint Type:
+      </label>
+      <input type="text" 
+      id="grid-ctype" 
+      name="ctype"
+      required="required"
+      value={ctype}
+      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700"  
+      placeholder="Enter the Complaint Type" 
+     
+      onChange={(e)=>{
+      setCtype(e.target.value); 
+       }} 
+      />
+     
+    </div>
   </div>
+
   <div className="flex flex-wrap -mx-3 mb-1">
     <div className="w-full px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-des">

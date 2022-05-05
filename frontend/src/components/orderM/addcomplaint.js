@@ -1,62 +1,53 @@
 import React,{useState} from "react"
-import './addorder.css';
 import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
 import Logo2 from "../../img/Logo-2.png"
-import Swal from "sweetalert2";
+//import Swal from "sweetalert2";
 
 
 export default function AddComplaint(){
+
+  const [ctype, setCtype] = useState("");
+  const [description, setDescription] = useState("");
+  const [email, setEmail] = useState("");
+
+
+  function sendData(e){
+    e.preventDefault();
+   
+    const newComplaint ={
+      ctype,
+      description,
+      email
+    }
+
+    const formData = new FormData();
+    formData.append('ctype', ctype);
+    formData.append('description', description);
+    formData.append('email', email);
+
+   axios.post("http://localhost:8070/complaints/create", formData).then(()=>{
+      setCtype("");
+      setDescription("");
+      setEmail("");
+      document.getElementById('formFile').value= null;
+   }).catch((err)=>{
+     alert(err)
+   })
  
-      const[ctype, setCtype]=useState("");
-      const[description, setDescription]=useState("");
-      const[email, setEmail]=useState("");
-
-
-      function sendData(e){
-        e.preventDefault();
-       
-        const newComplaint ={
-          ctype,
-          description,
-          email
-        }
-
-        const formData = new FormData();
-        formData.append('ctype', ctype);
-        formData.append('description', description);
-        formData.append('email', email);
-
-       axios.post("http://localhost:8070/complaints/create", formData).then(()=>{
-        //  alert("Complaint added")
-          setCtype("");
-          setDescription("");
-          setEmail("");
-          document.getElementById('formFile').value= null;
-       }).catch((err)=>{
-         alert(err)
-       })
-     
-       Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Complaint Added',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      
+  //  Swal.fire({
+  //   position: 'top-end',
+  //   icon: 'success',
+  //   title: 'Complaint added',
+  //   showConfirmButton: false,
+  //   timer: 1500
+  // })
+  
 }
 
-const Clear= ()=>{
-  setCtype("");
-  setDescription("");
-  setEmail("");
-
+function refreshPage() {
+  window.location.reload(false);
 }
-  
-  
-
-
  
    
 
@@ -73,11 +64,8 @@ return(
       <a href="/addorder" class="mr-5 hover:text-red-700 duration-500 ">Add Order</a>
       <a href="/orderlist" class="mr-5 hover:text-red-700 duration-500">Order List</a>
       <a href="addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500"></a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>
-   {/* <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div>  */}
-
-  
 
    <a href="/signin"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Log Out
      
@@ -105,7 +93,7 @@ return(
       <input type="text" 
        id="grid-ctype" 
        name="ctype" 
-      //  required pattern=""
+      
        value={ctype}
        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" 
        placeholder="Enter the Complaint Type"
@@ -118,11 +106,11 @@ return(
   </div>
   <div className="flex flex-wrap -mx-3 mb-1">
     <div className="w-full px-3">
-      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-description">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-des">
        Description:
       </label>
       <input type="text" 
-      id="grid-description" 
+      id="grid-des" 
       name="description"
       required="required"
       value={description}
@@ -136,26 +124,29 @@ return(
      
     </div>
   </div>
+
   <div className="flex flex-wrap -mx-3 mb-1">
     <div className="w-full px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
-      Email:
+       Email:
       </label>
       <input type="text" 
-       id="grid-email"  
-       name="email" 
-       value={email}
-       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700"  
-       placeholder="Enter the Email" 
-       onChange={(e)=>{
-       setEmail(e.target.value); 
-         }} 
-       />
+      id="grid-email" 
+      name="email"
+      required="required"
+      value={email}
+      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700"  
+      placeholder="Enter the Email" 
+     
+      onChange={(e)=>{
+      setEmail(e.target.value); 
+       }} 
+      />
      
     </div>
   </div>
 
-{/* <div className="md:flex md:items-center">
+<div className="md:flex md:items-center">
     <div className="md:w-1/3"></div>
     <div className="md:w-2/3">
 
@@ -163,38 +154,18 @@ return(
       <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
         Submit
       </button>  
-      <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded">
+      <button onClick={refreshPage} type="button" data-modal-toggle="delete-user-modal" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-5 ml-5 rounded">
        
        Clear
    </button>  
     </div>
-  </div> */}
-
-<div className="md:flex md:items-center">
-<div className="md:w-1/3"></div>
-<div className="md:w-2/3">
-  <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-4 rounded" type="submit">
-    Submit
-  </button>
-
-  <button onClick={Clear} className="btn shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-4 rounded md:items-left" type="submit">
-    Clear
-  </button>
-
-</div>
-</div>
+  </div>
 
 </form>
 </div>
 
 
-
-
-
-
-
-
 </div>
 
-    )
+     )
 }

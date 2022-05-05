@@ -15,7 +15,7 @@ router.route("/create").post(async (req, res) => {
 })
 
 router.route("/").get(async (req, res) => {
-    await Complaint.find().then((Complaints) => res.status(200).json(Orders)).catch(err => res.json({ success: false, err }))
+    await Complaint.find().then((Complaint) => res.status(200).json(Orders)).catch(err => res.json({ success: false, err }))
 })
 
 router.route("/get/:id").get(async (req, res) => {

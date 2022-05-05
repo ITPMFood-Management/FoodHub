@@ -20,6 +20,7 @@ import Viewdelivery from "./components/delivery/Viewdelivery"
 import AddOrder from "./components/orderM/addorder"
 import OrderList from "./components/orderM/orderlist"
 import AddComplaint from "./components/orderM/addcomplaint"
+import UpdateOrder from "./components/orderM/updateorder";
 
 import FoodList from "./components/FoodM/foodlist";
 // import CUSTOMERFOOD from "./components/FoodM/customerfood";
@@ -58,6 +59,7 @@ const App = () => {
         <Route path="/addorder"     element={<AddOrder/>}/>
         <Route path="/orderlist"   element={<OrderList/>}/>
         <Route path="/addcomplaint"   element={<AddComplaint/>}/>
+        <Route path="/updateorder"   element={<UpdateOrder/>}/>
 
 
         

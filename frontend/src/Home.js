@@ -186,7 +186,7 @@ const Home = () => {
       </div>
     </div>
   </div>
-  {/* <Pie
+  {/* { { <Pie
           data={state}
           options={{
             title:{
@@ -198,11 +198,12 @@ const Home = () => {
               display:true,
               position:'right'
             }
-          }}
+          }} */}
 
 </section>
 
   );
-};
+}; 
+//}
 
 export default Home;

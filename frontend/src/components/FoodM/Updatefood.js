@@ -292,8 +292,7 @@ const Updatefood = (props) => {
            <input className="form-control
            appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded pr-8 py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" type="file" id="formFile"
            onChange={(e)=>{
-             
-             setimage(e.target.files[0]); 
+          setimage(e.target.files[0]); 
                    }} 
            />
            {console.log("Image",Image)}

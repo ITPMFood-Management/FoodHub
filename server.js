@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors     = require("cors");
 const dotenv   = require("dotenv");
 
-const delivery=require('./BACKEND/routes/delivery');
+
 
 dotenv.config();
 
@@ -37,8 +37,11 @@ app.use('/customer',require('./BACKEND/routes/customer'))
 app.use('/food',require('./BACKEND/routes/Food'))
 
 
-app.use('/delivery',delivery)
+
 
 app.use('/orders',require('./BACKEND/routes/order'))
 
+
+const delivery=require('./BACKEND/routes/delivery');
 app.use('/complaints',require('./BACKEND/routes/complaint'))
+app.use("/api/auth",require("./BACKEND/routes/auth"))

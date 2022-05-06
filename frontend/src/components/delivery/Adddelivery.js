@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from "react";
 import "./delivery.css"
 import axios from 'axios';
+import Logo2 from '../../img/Logo-2.png'
 
 const Adddelivery = () => {
   const[name,setName]=useState('')
@@ -44,19 +45,19 @@ const Adddelivery = () => {
     return (
             
         <div>
- <header class="text-gray-400  body-font  fixed " > 
+<header class="text-gray-400  body-font  fixed " > 
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">
     <a href="/home" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-
+      <img src={Logo2} className="w-12" />
       <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-      <a href="/addDelivery" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
-      <a href="/Viewdelivery" class="mr-5 hover:text-red-700 duration-500">Account List</a>
+      <a href="/addcustomer" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
+      <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Account List</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>
-  
+   <div className=""> {/*  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))} */}</div> 
 
   
 

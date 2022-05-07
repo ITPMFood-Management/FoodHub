@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const Order = require("../models/order")
-// const multer = require('multer');
-// let path = require('path');
-// const { v4: uuidv4 } = require('uuid');
+const multer = require('multer');
+let path = require('path');
+const { v4: uuidv4 } = require('uuid');
 
 router.route("/create").post(async (req, res) => {
 
@@ -40,7 +40,7 @@ router.route("/update/:id").put(async (req, res) => {
     const phoneNumber = Number(req.body.phoneNumber)
     const quantity = Number(req.body.quantity)
 
-    await Order.findByIdAndUpdate({_id:id}, { customername, phoneNumber , address , category,  itemnumber  , quantity }).then(() => res.status(200).json({ success: true, message: "Successfully updated the Order" }).catch(err => res.json(err)))
+    await Order.findByIdAndUpdate(id, { customername, phoneNumber , address , category,  itemnumber  , quantity }).then(() => res.status(200).json({ success: true, message: "Successfully updated the Order" }).catch(err => res.json(err)))
 })
 
 router.route("/delete/:id").delete(async (req, res) => {

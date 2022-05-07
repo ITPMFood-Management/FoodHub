@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import background from '../../img/Order.png';
 import Logo2 from "../../img/Logo-2.png"
+import Swal from "sweetalert2";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -40,7 +41,7 @@ export default function AddOrder(){
         "http://localhost:8070/orders/create",value,
         config
       );
-      toast("Success! Added 😘");
+      //toast("Success! Added 😘");
       setCustomername("");
       setPhoneNumber("");
       setAddress("");
@@ -52,6 +53,15 @@ export default function AddOrder(){
       setTimeout(() => {}, 5000); //5s
     }
   }
+  
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Order Added Successfully',
+    showConfirmButton: false,
+    timer: 2500
+  })
+
   };
 
   const Clear= ()=>{
@@ -81,7 +91,6 @@ return(
       <a href="/addorder" class="mr-5 hover:text-red-700 duration-500 ">Add Order</a>
       <a href="/orderlist" class="mr-5 hover:text-red-700 duration-500">Order List</a>
       <a href="/addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
 </nav>
    
   

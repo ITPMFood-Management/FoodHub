@@ -31,49 +31,17 @@ router.route("/get/:id").get(async (req, res) => {
 
     await Order.findById(id).then((Order) => res.status(200).json(Order)).catch(err => res.json({ err }))
 })
+
 router.route("/update/:id").put(async (req, res) => {
     const { id } = req.params;
 
-    const { customername, address, category, itemnumber } = req.body;
-    const phoneNumber = Number(req.body.phoneNumber)
-    const quantity = Number(req.body.quantity)
+    const { customername, address, category, itemnumber, phoneNumber, quantity } = req.body;
+ 
+    // const phoneNumber = Number(req.body.phoneNumber)
+    // const quantity = Number(req.body.quantity)
 
-    await Order.findByIdAndUpdate(id, { customername, phoneNumber , address , category,  itemnumber  , quantity }).then(() => res.status(200).json({ success: true, message: "Successfully updated the Order" }).catch(err => res.json(err)))
+    await Order.findByIdAndUpdate(id, { customername, category, address,    itemnumber, phoneNumber , quantity }).then(() => res.status(200).json({ success: true, message: "Successfully updated the Order" })).catch((err) => res.status(500).json({err:err}))
 })
-// router.route("/update/:id") ,async (req, res) => {
-//     const{ id } = req.params;
-//     const{
-//         customername, 
-//         address, 
-//         category, 
-//         itemnumber
-//    } = req.body;
-//     const phoneNumber = Number(req.body.phoneNumber)
-//     const quantity = Number(req.body.quantity)
-
-//     await Food.findByIdAndUpdate(id, {
-//         customername, 
-//         address, 
-//         category, 
-//         itemnumber,
-//         itemnumber  , 
-//         quantity
- 
-//     })
-//      .then(() => res.json({success: true}))
-//      .catch((error) => res.json({ success: false, error: error}));
-// }
-
-// router.route("/update/:id").put(async (req, res) => {
-//     const { id } = req.params;
-
-//     const { customername, address, category, itemnumber } = req.body;
- 
-//     const phoneNumber = Number(req.body.phoneNumber)
-//     const quantity = Number(req.body.quantity)
-
-//     await Order.findByIdAndUpdate(id, { customername, phoneNumber , address , category,  itemnumber  , quantity }).then(() => res.status(200).json({ success: true, message: "Successfully updated the Order" }).catch(err => res.json(err)))
-// })
 
 router.route("/delete/:id").delete(async (req, res) => {
     const { id } = req.params;

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Logo2 from "../../img/Logo-2.png"
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-
+import Swal from "sweetalert2";
 
 
 
@@ -30,6 +30,14 @@ export default function OrderList(){
          console.log("delete success");
          
          })
+
+         Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Order Deleted Successfully',
+            showConfirmButton: false,
+            timer: 2500
+          })
        }
 
        const searchItems = (searchValue) => {
@@ -76,7 +84,7 @@ export default function OrderList(){
       <a href="/addorder" class="mr-5 hover:text-red-700 duration-500 ">Add Order</a>
       <a href="/orderlist" class="mr-5 hover:text-red-700 duration-500">Order List</a>
       <a href="/addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
+
     </nav>
    
   
@@ -126,6 +134,12 @@ export default function OrderList(){
                         <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
                        <span>Download Report</span>
                         </button> */}
+
+                        <button onClick={genPDF} type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center float-right">
+                        Downlord Order details 
+                        </button>
+
+
 
                            <table class="table-fixed min-w-full divide-y divide-gray-200 " id="content">
                                <thead class="bg-gray-100">
@@ -228,9 +242,9 @@ export default function OrderList(){
 </tbody>
 </table>
 
-        <button onClick={genPDF} type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+        {/* <button onClick={genPDF} type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center ">
         Downlord Order details 
-        </button>
+        </button> */}
 
 </div>
 </div>

@@ -53,7 +53,7 @@ const Adddelivery = () => {
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
       <a href="/addcustomer" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
-      <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Account List</a>
+      <a href="/Viewdelivery" class="mr-5 hover:text-red-700 duration-500">Account List</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
     </nav>

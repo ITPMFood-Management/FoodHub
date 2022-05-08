@@ -94,7 +94,7 @@ const Updateorder = (props) => {
             
             </nav>
 
-          <a href="/signin"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Log Out
+          <a href="../Home"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Log Out
             
            <ion-icon name="person-circle-outline"></ion-icon>
            

@@ -6,6 +6,7 @@
  import { Link } from "react-router-dom";
  import jsPDF from 'jspdf';
  import 'jspdf-autotable';
+ import Swal from "sweetalert2";
 
  const Viewdelivery = () => {
      const[details,setDetails]=useState([]);
@@ -30,7 +31,15 @@
           console.log("delete succes");
           
           })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Delete succesfully',
+            showConfirmButton: false,
+            timer: 2500,
+          })
         }
+
         //serch function
         const searchItems = (searchValue) => {
             setSearchInput(searchValue)

@@ -21,10 +21,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "gulp": "^4.0.2",
-
-
     "install": "^0.13.0",
-
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.23",
     "material-table": "^2.0.3",
@@ -41,10 +38,7 @@
     "sass": "^1.51.0",
     "styled-components": "^5.3.5",
     "sweetalert2": "^11.4.10",
-
-
     "util": "^0.12.4",
-
     "web-vitals": "^2.1.4"
   },
   "scripts": {

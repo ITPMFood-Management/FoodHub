@@ -129,7 +129,7 @@ const [gender, setGender] = useState("")
 
         </div>
 
-        <a href="/viewDelivery">
+        <a >
         <button onClick={submit} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
        
                                               Submit

@@ -2,6 +2,7 @@ import React,{useEffect,useState} from "react";
 import "./delivery.css"
 import axios from 'axios';
 import Logo2 from '../../img/Logo-2.png'
+import Swal from "sweetalert2";
 
 const Adddelivery = () => {
   const[name,setName]=useState('')
@@ -25,7 +26,15 @@ const Adddelivery = () => {
     }
   axios.post('http://localhost:8070/delivery/create', data).then(res=>{
     console.log(res);
-  }) 
+  })
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Added succesfully',
+    showConfirmButton: false,
+    timer: 1500,
+  })
+  
   }
   const Clear= ()=>{
     setName("")
@@ -52,10 +61,17 @@ const Adddelivery = () => {
       <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
+
+      <a href="/addDelivery" class="mr-5 hover:text-red-700 duration-500 ">Add Delivery Details</a>
+      <a href="/Viewdelivery" class="mr-5 hover:text-red-700 duration-500">View delivery details</a>
+      <a href="/Updatedelivery" class="mr-5 hover:text-red-700 duration-500">Update delivery details</a>
+      {/* <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a> */}
+
       <a href="/addcustomer" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
       <a href="/Viewdelivery" class="mr-5 hover:text-red-700 duration-500">Account List</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
+
     </nav>
    <div className=""> {/*  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))} */}</div> 
 
@@ -72,11 +88,11 @@ const Adddelivery = () => {
 
       <p class="text-2xl flex justify-center">Create Delivery</p>
       <div class=" flex justify-center">
-          <form className="w-11/12 p-12 bg-gray-50 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20">
+          <form className="w-11/12 p-12 bg-cyan-200 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20">
         <div className="">
 
         <div class="">Name
-  <input value={name} onChange={(e)=>setName(e.target.value)} required pattern="[A-Za-z]+" title="Name cannot contain any numbers or special characters"  type="text" name="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <input value={name} onChange={(e)=>setName(e.target.value)}  required="required" title="Name cannot contain any numbers or special characters"  type="text" name="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
  
 </div>
 

@@ -2,7 +2,7 @@ import React,{useState} from "react"
 // import './AddFood.css';
 import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
-import Logo2 from "../../img/Logo-2.png"
+import Logo2 from "../../img/Logo-2.png";
 import Swal from "sweetalert2";
 
 
@@ -62,7 +62,7 @@ export default function AddFood(){
     icon: 'success',
     title: 'food added',
     showConfirmButton: false,
-    timer: 1500
+    timer:8000
   })
   
 }
@@ -98,7 +98,7 @@ return(
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
       <a href="/addfood" class="mr-5 hover:text-red-700 duration-500 ">Add Food</a>
       <a href="/foodlist" class="mr-5 hover:text-red-700 duration-500">Food List</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Update Food Details</a>
+      <a href="/orders" class="mr-5 hover:text-red-700 duration-500">Orders</a>
       <a href="" class="mr-5 hover:text-red-700 duration-500"></a>
     </nav>
    {/* <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div>  */}
@@ -131,7 +131,8 @@ return(
       <input type="text" 
        id="grid-fcode" 
        name="Foodcode" 
-       required="required"
+      required="required"
+      
        value={Foodcode}
        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" 
        placeholder="Enter the Food Code"
@@ -150,7 +151,8 @@ return(
       <input type="text" 
       id="grid-fName" 
       name="Foodname"
-      required="required"
+      
+       required="required"
       value={Foodname}
       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700"  
       placeholder="Enter the Food Name" 
@@ -288,7 +290,10 @@ return(
   <div class="mb-3 w-96">
     <label for="formFile" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Upload the Food image:</label>
     <input className="form-control
-    appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded pr-8 py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" type="file" id="formFile"
+    appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded pr-8 py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" 
+    type="file" 
+    id="formFile"
+    accept=".png, .jpg, .jpeg"
     onChange={(e)=>{
   //  setimage(e.target.value);   
     setimage(e.target.files[0]); 

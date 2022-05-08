@@ -4,6 +4,8 @@ import Logo2 from "../../img/Logo-2.png"
 // import { use } from "express/lib/router";
 import { useParams } from "react-router-dom";
 import moment from 'moment';
+import Swal from "sweetalert2";
+
 
 const Updatefood = (props) => {
 
@@ -81,13 +83,13 @@ const Updatefood = (props) => {
      alert(err)
    })
  
-  // //  Swal.fire({
-  // //   position: 'top-end',
-  // //   icon: 'success',
-  // //   title: 'food added',
-  // //   showConfirmButton: false,
-  // //   timer: 1500
-  // })
+   Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'food added',
+    showConfirmButton: false,
+    timer: 8000
+  })
   
 }
 
@@ -290,13 +292,16 @@ const Updatefood = (props) => {
          <div class="mb-3 w-96">
            <label for="formFile" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Upload the Food image:</label>
            <input className="form-control
-           appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded pr-8 py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" type="file" id="formFile"
+           appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded pr-8 py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-700" 
+            type="file"
+            id="formFile"
+            accept=".png, .jpg, .jpeg"
            onChange={(e)=>{
           setimage(e.target.files[0]); 
                    }} 
            />
            {console.log("Image",Image)}
-           {Image!=""  && <img class="h-20 w-20 " src={"./../../../public/foodima/"+Image}/>}
+           {Image!=""  && <img class="h-20 w-20 " src={"./../../../../frontend/public/foodima"+Image}/>}
          </div>
        </div> 
        

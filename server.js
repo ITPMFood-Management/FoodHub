@@ -42,6 +42,7 @@ app.use('/food',require('./BACKEND/routes/Food'))
 app.use('/orders',require('./BACKEND/routes/order'))
 
 
-const delivery=require('./BACKEND/routes/delivery');
+// const delivery=require('./BACKEND/routes/delivery');
 app.use('/complaints',require('./BACKEND/routes/complaint'))
 app.use("/api/auth",require("./BACKEND/routes/auth"))
+app.use("/delivery",require('./BACKEND/routes/delivery'))

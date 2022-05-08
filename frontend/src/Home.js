@@ -19,7 +19,7 @@ const Home = () => {
             <span className=" text-3xl text-indigo-600 mr-3 pt-2 ml-3">
               <ion-icon name="logo-ionic"></ion-icon>
             </span>
-            <a href="/"> FOOD HUB</a>
+            <a href=""> FOOD HUB</a>
           </div>
           <div
             onClick={() => setOpen(!open)}

@@ -1,151 +1,150 @@
-// import React, { Component } from "react";
-// import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button';
-// import axios from 'axios';
-// import {Link} from "react-router-dom";
-// import { useEffect,useState } from "react";
+import React,{useEffect,useState} from "react";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-// function Editcustomer() {
-//     const [newUser, setNewUser] = useState(
-//         {
-//             name: '',
-//             age : '',
-//             gender : '',
-//             address: '',
-//             phone: '',
-//             email : '',
-//             photo: '',
-//         }
-//     );
+
+const Editcustomer = (props) => {
+    const[name,setName]=useState('')
+    const[age,setAge]=useState('')
+const [gender, setGender] = useState("")
+ 
+    const[address,setAddress]=useState('')
+    const[phone,setPhone]=useState('')
+    const[email,setEmail]=useState('')
+    const[details,setDetails]=useState([]);
+    const params = useParams()
+
+
+     
+  useEffect(()=>{
+  
+    getData();
+     
+  },[])
+  const getData=(id)=>{
+  
+
+    axios.get(`http://localhost:8070/customer/get/${id}`).then(res=>{
+      console.log(res.data)
+      setName(res.data.name)
+      setAge(res.data.age)
+      setEmail(res.data.email)
+      setGender(res.data.gender)
+      setPhone(res.data.phone)
+      setAddress(res.data.address)
+    }) 
+    .then((res)=>{
+      console.log(res.data);
+    }) 
+  }
+ 
+  const submit=(id)=>{
+    const data={
+      name: name,
+      address:address,
+      age:age,
+      phone: phone,
+      email:email,
+      gender:gender
+    }
+ axios.put(`http://localhost:8070/customer/update/${id}`, data).then(res=>{
+    console.log(res);
+  }) 
+  }
+  const Clear= ()=>{
+    setName("")
+    setAge("")
+ setGender("")
+ 
+    setAddress("")
+    setPhone("")
+    setEmail("")
     
 
-//   return (
-//     <div>
-//                 <nav className="" >
-//                 <div className="container-fluid">
-//                   <a className="navbar-brand" href="#" style={{color:"red"}}><b>Customer Management System</b></a>
-//                   <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-//                     <span className="navbar-toggler-icon"></span>
-//                   </button>
-//                   <div className="collapse navbar-collapse" id="navbarSupportedContent">
-//                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 nav nav-tabs">
-//                       <li className="nav-item">
-//                         <Link className="nav-link " aria-current="page" to = "/staff-customerM" style={{color:"#00ff00"}}><i class="fa fa-fw fa-home"></i>Home</Link>
-//                       </li>
-//                       <li className="nav-item">
-//                         <Link className="nav-link " to = "/add-customerM" style={{color:"#00ff00"}}><i class="fa fa-user-circle" aria-hidden="true"></i> Create Profile</Link>
-//                       </li>
-//                       <li className="nav-item">
-//                         <Link className="nav-link" to = "/display-customerM" style={{color:"#00ff00"}}><i class="fa fa-desktop" aria-hidden="true"></i> Display Profiles</Link>
-//                       </li>
-//                       <li className="nav-item">
-//                         <Link className="nav-link active" to = "#" style={{color:"#00ff00"}}><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profiles</Link>
-//                       </li>
-//                       <li className="nav-item">
-//                         <Link className="nav-link" to = "/complaints-customerM" style={{color:"#00ff00"}}><i class="fa fa-comments" aria-hidden="true"></i> Complaints</Link>
-//                       </li>
-//                         <img src = "https://i.ibb.co/M5qJphr/customer.gif" style={{width:"7%" , marginLeft:"300px"}}/>
-//                     </ul>
-//                   </div>
-//                 </div>
-//               </nav>
+  }
+
+
+
+   
+
+   
+
+   const retrievePosts=(id)=>{
+        axios.get(`http://localhost:8070/customer/get/${id}`).then(res =>{
+          console.log(res.data)
+      
+        })}
+
+  
+       
+
+  return (
+    <div>
+           <div class=" flex justify-center">
+          <form className="w-11/12 p-12 bg-gray-50 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20">
+        <div className="">
+
+        <div class="">Name
+  <input value={name} onChange={(e)=>setName(e.target.value)} required pattern="[A-Za-z]+" title="Name cannot contain any numbers or special characters"  type="text" name="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+ 
+</div>
+
+
+
+          <br /> 
+          <div class="">Age
+  <input  value={age}  onChange={(e)=>setAge(e.target.value)} required pattern="[1-9]{1,3}" title="Age cannot contain any letters or special characters  and Age > 0"  type="text" name="age" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <label for="age" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
+</div>
+             <br /> 
+             <div class="">Workdate
+  <input   value={gender}  onChange={(e)=>setGender(e.target.value)} required pattern="[A-Za-z]+" title="Gender cannot contain any numbers or special characters"  type="text" name="gender" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <label for="gender" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
+</div>
+              <br />
+
+              
+
+
+
+            <br />  
+            <div class="">Address
+  <input   value={address}  onChange={(e)=>setAddress(e.target.value)} required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"  type="text" name="phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <label for="phone" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
+</div>
+
+
+              <br />  
+              <div class="">Phone Number
+  <input   value={phone}   onChange={(e)=>setPhone(e.target.value)} required pattern = "[0-9a-zA-Z%&$@.]+@[a-zA-Z]+\.+[a-zA-Z]{2,3}"   type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <label for="email" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
+</div>
+
+<div class="">Email Address
+  <input   value={email}   onChange={(e)=>setEmail(e.target.value)} required pattern = "[0-9a-zA-Z%&$@.]+@[a-zA-Z]+\.+[a-zA-Z]{2,3}"   type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <label for="email" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
+</div>
+
              
-//                <div className="bg4">
-//                 <div className="form-wrapper container" style={{width:"100%" , marginRight:"100px" , background:"black"}}><br/><br/>
-//                   <h1 style={{color:"white"}}>Current Info 👁</h1>
-//                   <table>
 
-//                       <td controlId="Name">
-//                       <label style={{color:"white"}}>Name</label>
-//                       <input type="text" value={name} onChange={this.onChangeCustomerName} required disabled/>
-//                       </td>
+        </div>
 
-//                       <td controlId="Age">
-//                       <label style={{color:"white"}}>Age</label>
-//                       <input type="text" value={age} onChange={this.onChangeCustomerAge} required disabled/>
-//                       </td>
+        <a href="/viewDelivery">
+        <button onClick={submit} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+       
+                                              Submit
+                                          </button>  </a>
 
-//                       <td controlId="Gender">
-//                       <label style={{color:"white"}}>Gender</label>
-//                       <input type="text" value={gender} onChange={this.onChangeCustomerGender} required disabled/>
-//                       </td>
+                                          <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+       
+       Clear
+   </button>  
+        
+    
+    </form>
+    </div>
+</div>
+  )
+}
 
-//                       <td controlId="Address">
-//                       <label style={{color:"white"}}>Address</label>
-//                       <input type="text" value={address} onChange={this.onChangeCustomerAddress} required disabled/>
-//                       </td>
-
-//                       <td controlId="Phone">
-//                       <label style={{color:"white"}}>Phone</label>
-//                       <input type="text" value={phone} onChange={this.onChangeCustomerPhone} required disabled/>
-//                       </td>
-
-//                       <td controlId="Email">
-//                       <label style={{color:"white"}}>Email</label>
-//                       <input type="text" value={email} onChange={this.onChangeCustomerEmail} required disabled/>
-//                       </td>
-
-
-
-//                   </table>
-//                   </div>
-//                   <div className="form-wrapper container" style={{width:"50%" , background:"#171717" , padding:"10px 10px 10px 10px" , opacity:"0.8" , marginRight:"auto" , marginLeft:"auto" , display:"block"}} className="polaroid"><br/><br/>
-//                   <h1 style={{color:"white"}}>Need to Update ? 🤔</h1>
-//                   <Form onSubmit={this.onSubmit}>
-                
-//                       <Form.Group controlId="Name">
-//                       <label style={{fontSize:"30px" , color:"red"}}>*</label><Form.Label>Name</Form.Label>
-//                       <Form.Control type="text" value={this.state.name} onChange={this.onChangeCustomerName} placeholder="✍🏻 Edit Name" required pattern="[A-Za-z]+" title="Name cannot contain any numbers or special characters"/>
-//                       </Form.Group>
-
-//                       <Form.Group controlId="Age">
-//                       <label style={{fontSize:"30px" , color:"red"}}>*</label><Form.Label>Age</Form.Label>
-//                       <Form.Control type="text" value={this.state.age} onChange={this.onChangeCustomerAge} placeholder="✍🏻 Edit Age" required pattern="[1-9]{1,3}" title="Age cannot contain any letters or special characters  and Age > 0"/>
-//                       </Form.Group>
-
-//                       <Form.Group controlId="Gender">
-//                       <label style={{fontSize:"30px" , color:"red"}}>*</label><Form.Label>Gender</Form.Label>
-//                       <Form.Control type="text" value={this.state.gender} onChange={this.onChangeCustomerGender} placeholder="✍🏻 Edit Gender" required pattern="[A-Za-z]+" title="Gender cannot contain any numbers or special characters"/>
-//                       </Form.Group>
-
-//                       <Form.Group controlId="Address">
-//                       <label style={{fontSize:"30px" , color:"red"}}>*</label><Form.Label>Address</Form.Label>
-//                       <Form.Control type="text" value={this.state.address} onChange={this.onChangeCustomerAddress} placeholder="✍🏻 Edit Address" required/>
-//                       </Form.Group>
-                      
-//                       <Form.Group controlId="Phone">
-//                       <label style={{fontSize:"30px" , color:"red"}}>*</label><Form.Label>Phone</Form.Label>
-//                       <Form.Control type="text" value={this.state.phone} onChange={this.onChangeCustomerPhone} placeholder="✍🏻 Edit Phone" required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"/>
-//                       </Form.Group>
-
-//                       <Form.Group controlId="Email">
-//                       <label style={{fontSize:"30px" , color:"red"}}>*</label><Form.Label>Email</Form.Label>
-//                       <Form.Control type="text" value={this.state.email} onChange={this.onChangeCustomerEmail} placeholder="✍🏻 Edit Email" required pattern = "[0-9a-zA-Z%&$@.]+@[a-zA-Z]+\.+[a-zA-Z]{2,3}"/>
-//                       </Form.Group><br/>
-
-
-//                       <Form.Group controlId="Photo" style={{textAlign:"center"}}>
-//                       <label style={{fontSize:"30px" , color:"red"}}>*</label><Form.Label>Photo</Form.Label>
-//                       <i class="fa fa-folder-open" aria-hidden="true"></i>
-//                       <input 
-//                           type="file" 
-//                           accept=".png, .jpg, .jpeg"
-//                           name="photo"
-//                           onChange={this.onChangeCustomerPhoto} required style={{color:"white" , backgroundColor:"black"}}
-//                       />
-                    
-//                       </Form.Group>
-
-//                       <br/>
-//                       <Button variant="danger" size="lg" block="block" type="submit" style={{marginLeft:"auto", marginRight:"auto" , display:"block"}}>
-//                       <i className="fa fa-paper-plane-o" aria-hidden="true"></i> Update Customer
-//                       </Button>
-//                   </Form>
-//                   </div><br/><br/><br/><br/>
-//                </div>
-             
-//         </div>
-//   )
-// }
-
-// export default Editcustomer
+export default Editcustomer

@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import Logo2 from "../../img/Logo-2.png"
+import { Modal, Button } from 'antd';
 
 
 
@@ -9,18 +10,21 @@ import Logo2 from "../../img/Logo-2.png"
 
 
 const Addcustomer = () =>{
+  const [visible, setVisible] = useState(false);
     
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [photo, setPhoto] = useState("");
   const [loading, setLoading] = useState(false); //additional 
   const [isError, setIsError] = useState(false);
   const [listOfUsers, setListOfUsers] = useState([]);
 
 
-    useEffect((id) => {
-        axios.get(`http://localhost:8070/customer/user/${id}`).then((response) => {
-          setListOfUsers(response.data);
-        });
-      }, []);
-
+   
 
   const [newUser, setNewUser] = useState(
       {
@@ -94,26 +98,35 @@ const getDataFromAPI = () => {
     setMyOptions(myOptions)
   })
 }
+const Clear= ()=>{
+  setName("")
+  setAge("")
+  setGender("")
+  setAddress("")
+  setPhone("")
+  setPhoto("")
+  setEmail("")
+  
 
-function refreshPage() {
-  window.location.reload(false);
 }
 
 
+
   return (
-    <div >
-      <header class="text-gray-400  body-font  fixed " > 
+    
+    <>
+     <header class="text-gray-400  body-font  fixed " > 
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">
     <a href="/home" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
       <img src={Logo2} className="w-12" />
       <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-      <a href="/addcustomer" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
+      <a href="/addcustomer" class="mr-5 hover:text-red-700 duration-500 ">Dashboard</a>
       <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Account List</a>
       <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Complaints</a>
     </nav>
-   <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div> 
+   {/* <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div>  */}
 
   
 
@@ -125,9 +138,22 @@ function refreshPage() {
    
   </div>
 </header>
+      <Button type="primary" className='mt-32 ml-5' onClick={() => setVisible(true)}>
+        Add Customer
+      </Button>
+      <Modal className='mt-52'
+        title="Add New Customer"
+      
+        visible={visible}
+        onOk={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+        width={800}
+      >
+        <div >
+     
 
         <div className="grid min-h-screen place-items-center "  ><br/><br/>
-            <form onSubmit={handleSubmit} encType='multipart/form-data'  className="w-11/12 p-12  sm:w-8/12 md:w-1/2 lg:w-5/12 mt-36 bg-gray-200 "><br />
+            <form onSubmit={handleSubmit} encType='multipart/form-data'  className=" w-96"><br />
             
             <div className="">
 
@@ -193,7 +219,7 @@ function refreshPage() {
             <br/>
             
             <div style={{textAlign:"center"}}>
-             <button onClick={refreshPage} type="button" data-modal-toggle="delete-user-modal" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+             <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
         Clear
    </button>  
                      {isError && <small className="mt-3 d-inline-block text-danger"><br/>Something went wrong. Please try again later.</small>}
@@ -213,7 +239,11 @@ function refreshPage() {
         <br/><br/><br/><br/><br/><br/>
         </div>
         </div>
-  )
-}
+      </Modal>
+    </>
+  );
+};
+   
+
 
 export default Addcustomer

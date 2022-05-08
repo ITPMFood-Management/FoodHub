@@ -2,6 +2,13 @@ import React from "react";
 import Logo2 from "../../img/Logo-2.png";
 import food from "../../img/food.jpg";
 import { useNavigate } from "react-router-dom";
+import food1 from "../../img/f1.jpg";
+import food2 from "../../img/f2.png";
+import food3 from "../../img/f9.png";
+import food4 from "../../img/f4.png";
+import food5 from "../../img/f5.png";
+import food6 from "../../img/f6.png";
+import food7 from "../../img/f7.png";
 
 function Userpage() {
   const history = useNavigate();
@@ -60,138 +67,166 @@ function Userpage() {
               </a>
               <div class="mt-4">
                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                  CATEGORY
+                  PIZZA
                 </h3>
                 <h2 class="text-white title-font text-lg font-medium">
                   The Catalyzer
                 </h2>
-                <p class="mt-1">$16.00</p>
+                <p class="mt-1">RS.550.00</p>
+                <a href=""></a>
+                <button
+                  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded"
+                  type="submit"
+                >
+                  More...
+                </button>
               </div>
             </div>
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
               <a class=" block h-48 rounded overflow-hidden">
-                <img
-                  alt="ecommerce"
-                  class="object-cover object-center w-full h-full block"
-                  src="https://dummyimage.com/421x261"
-                ></img>
+                <img src={food1} className=" w-auto h-fit" />
               </a>
               <div class="mt-4">
                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                  CATEGORY
+                  CHICKEN BURGER
                 </h3>
                 <h2 class="text-white title-font text-lg font-medium">
                   Shooting Stars
                 </h2>
-                <p class="mt-1">$21.15</p>
+                <p class="mt-1">RS.675.00</p>
+                <a href=""></a>
+                <button
+                  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded"
+                  type="submit"
+                >
+                  More...
+                </button>
               </div>
             </div>
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
               <a class="block  h-48 rounded overflow-hidden">
-                <img
-                  alt="ecommerce"
-                  class="object-cover object-center w-full h-full block"
-                  src="https://dummyimage.com/422x262"
-                ></img>
+                <img src={food2} className=" w-auto h-fit" />
               </a>
               <div class="mt-4">
                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                  CATEGORY
+                  ONION RINGS
                 </h3>
                 <h2 class="text-white title-font text-lg font-medium">
                   Neptune
                 </h2>
-                <p class="mt-1">$12.00</p>
+                <p class="mt-1">RS.250.00</p>
+                <a href=""></a>
+                <button
+                  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded"
+                  type="submit"
+                >
+                  More...
+                </button>
               </div>
             </div>
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
               <a class="block  h-48 rounded overflow-hidden">
-                <img
-                  alt="ecommerce"
-                  class="object-cover object-center w-full h-full block"
-                  src="https://dummyimage.com/423x263"
-                ></img>
+                <img src={food3} className=" w-auto h-fit" />
               </a>
               <div class="mt-4">
                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                  CATEGORY
+                  BIRIYANI
                 </h3>
                 <h2 class="text-white title-font text-lg font-medium">
                   The 400 Blows
                 </h2>
-                <p class="mt-1">$18.40</p>
+                <p class="mt-1">RS.850.00</p>
+                <a href=""></a>
+                <button
+                  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded"
+                  type="submit"
+                >
+                  More...
+                </button>
               </div>
             </div>
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
               <a class="block  h-48 rounded overflow-hidden">
-                <img
-                  alt="ecommerce"
-                  class="object-cover object-center w-full h-full block"
-                  src="https://dummyimage.com/424x264"
-                ></img>
+                <img src={food4} className=" w-auto h-fit" />
               </a>
               <div class="mt-4">
                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                  CATEGORY
+                  CHOCOLATE MOUSSE
                 </h3>
                 <h2 class="text-white title-font text-lg font-medium">
                   The Catalyzer
                 </h2>
-                <p class="mt-1">$16.00</p>
+                <p class="mt-1">RS.350.00</p>
+                <a href=""></a>
+                <button
+                  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded"
+                  type="submit"
+                >
+                  More...
+                </button>
               </div>
             </div>
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
               <a class="block  h-48 rounded overflow-hidden">
-                <img
-                  alt="ecommerce"
-                  class="object-cover object-center w-full h-full block"
-                  src="https://dummyimage.com/425x265"
-                ></img>
+                <img src={food5} className=" w-auto h-fit" />
               </a>
               <div class="mt-4">
                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                  CATEGORY
+                  CHOCOLATE CAKE
                 </h3>
                 <h2 class="text-white title-font text-lg font-medium">
                   Shooting Stars
                 </h2>
-                <p class="mt-1">$21.15</p>
+                <p class="mt-1">RS.275.00</p>
+                <a href=""></a>
+                <button
+                  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded"
+                  type="submit"
+                >
+                  More...
+                </button>
               </div>
             </div>
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
               <a class="block  h-48 rounded overflow-hidden">
-                <img
-                  alt="ecommerce"
-                  class="object-cover object-center w-full h-full block"
-                  src="https://dummyimage.com/427x267"
-                ></img>
+                <img src={food6} className=" w-auto h-fit" />
               </a>
               <div class="mt-4">
                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                  CATEGORY
+                  PAN CAKE
                 </h3>
                 <h2 class="text-white title-font text-lg font-medium">
                   Neptune
                 </h2>
-                <p class="mt-1">$12.00</p>
+                <p class="mt-1">RS.150.00</p>
+                <a href=""></a>
+                <button
+                  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded"
+                  type="submit"
+                >
+                  More...
+                </button>
               </div>
             </div>
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
               <a class="block  h-48 rounded overflow-hidden">
-                <img
-                  alt="ecommerce"
-                  class="object-cover object-center w-full h-full block"
-                  src="https://dummyimage.com/428x268"
-                ></img>
+                <img src={food7} className=" w-auto h-fit" />
               </a>
               <div class="mt-4">
                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                  CATEGORY
+                  CUP CAKE
                 </h3>
                 <h2 class="text-white title-font text-lg font-medium">
                   The 400 Blows
                 </h2>
-                <p class="mt-1">$18.40</p>
+                <p class="mt-1">RS.120.00</p>
+                <a href=""></a>
+                <button
+                  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded"
+                  type="submit"
+                >
+                  More...
+                </button>
               </div>
             </div>
           </div>

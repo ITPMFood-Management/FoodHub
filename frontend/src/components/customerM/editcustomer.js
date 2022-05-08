@@ -16,7 +16,7 @@ const Editcustomer = () => {
   const params = useParams();
   const [photo, setPhoto] = React.useState(null);
 
-  // yuo can find all params from here
+  // you can find all params from here
 
   useEffect(() => {
     getData();

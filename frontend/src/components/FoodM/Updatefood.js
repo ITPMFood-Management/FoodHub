@@ -86,9 +86,9 @@ const Updatefood = (props) => {
    Swal.fire({
     position: 'top-end',
     icon: 'success',
-    title: 'food added',
+    title: 'Update Food Details Successfuly',
     showConfirmButton: false,
-    timer: 8000
+    timer: 2500
   })
   
 }
@@ -106,7 +106,7 @@ const Updatefood = (props) => {
            <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
              <a href="/addfood" class="mr-5 hover:text-red-700 duration-500 ">Add Food</a>
              <a href="/foodlist" class="mr-5 hover:text-red-700 duration-500">Food List</a>
-             <a href="" class="mr-5 hover:text-red-700 duration-500">Update Food Details</a>
+             <a href="/orders" class="mr-5 hover:text-red-700 duration-500">Orders</a>
              <a href="" class="mr-5 hover:text-red-700 duration-500"></a>
            </nav>
           {/* <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div>  */}
@@ -300,8 +300,7 @@ const Updatefood = (props) => {
           setimage(e.target.files[0]); 
                    }} 
            />
-           {console.log("Image",Image)}
-           {Image!=""  && <img class="h-20 w-20 " src={"./../../../../frontend/public/foodima"+Image}/>}
+           {/* <img className="flex" src={"/foodima/" + Image} style={{width:"100px" , height:"100px"}} /> */}
          </div>
        </div> 
        
@@ -309,10 +308,10 @@ const Updatefood = (props) => {
            <div className="md:w-1/3"></div>
            <div className="md:w-2/3">
        
-           
+         
              <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
-               Submit
-             </button>  
+             Update
+             </button>
              
            </div>
          </div>

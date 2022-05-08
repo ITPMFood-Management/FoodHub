@@ -62,7 +62,7 @@ export default function AddFood(){
     icon: 'success',
     title: 'food added',
     showConfirmButton: false,
-    timer:8000
+    timer:2500
   })
   
 }

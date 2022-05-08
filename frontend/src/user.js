@@ -1,38 +1,7 @@
-// import React,{useState,useEffect} from 'react'
+
 import React from "react";
 const User = () => {
-//     const [name, setName] = useState('')
-//     const [age, setAge] = useState('')
-//     const [gender, setGender] = useState('')
-//     const [address, setAddress] = useState('')
-//     const [phone , setPhone ] = useState('')
-//     const [email, setEmail] = useState('')
 
-// name,
-// setName,
-// age,
-// setAge,
-// gender,
-// setGender,
-// address,
-// setAddress,
-// phone ,
-// setPhone ,
-// email,
-// setEmail,
-
-// name={name}
-// setName={setName}
-// age={age}
-// setAge={setAge}
-// gender={gender}
-// setGender={setGender}
-// address={address}
-// setAddress={setAddress}
-// phone ={phone }
-// setPhone ={setPhone }
-// email={email}
-// setEmail={setEmail}
     
   return (
     <section class="text-gray-600 body-font">

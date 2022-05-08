@@ -36,7 +36,7 @@ console.log(listOfFood);}
             icon: 'success',
             title: 'Food Delete successfully',
             showConfirmButton: false,
-            timer:5300
+            timer:2500
           })
          
 

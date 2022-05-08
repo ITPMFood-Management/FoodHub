@@ -3,7 +3,7 @@ import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 import Addcustomer from "./components/customerM/addcustomer";
 import Customerlist from "./components/customerM/customerlist";
-import Editcustomer from "./components/customerM/editcustomer";
+import Editcustomer from "./components/customerM/Editcustomer";
 import Foodhub from "./components/foodhub";
 import Footer from "./footer";
 import Home from "./Home";
@@ -59,7 +59,7 @@ const App = () => {
           />
        
         <Route path="/customerlist" element={<Customerlist/>}/>
-        <Route path="/Editcustomer" element={<Editcustomer/>}/>
+        <Route path="/editcustomer" element={<Editcustomer/>}/>
 
 
         <Route path="/addorder"     element={<AddOrder/>}/>

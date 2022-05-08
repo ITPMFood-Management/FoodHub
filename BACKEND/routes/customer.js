@@ -60,7 +60,7 @@ router.route("/").get((req , res)=>{ //route for display all
 
 });
 
-router.route("/update/:id").put(async (req , res)=>{  //update data
+router.route("/update/:id").put (async (req , res)=>{  //update data
     let CustomerID = req.params.id;
     const name = req.body.name;
     const age = Number(req.body.age);
@@ -68,6 +68,7 @@ router.route("/update/:id").put(async (req , res)=>{  //update data
     const address = req.body.address;
     const phone = Number(req.body.phone);
     const email = req.body.email;
+  
 
 
 

@@ -22,18 +22,7 @@ function Foodhub() {
             <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
           </a>
           <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-            <a href="/Adminregister" class="mr-5 hover:text-red-700 duration-500 ">
-              First Link
-            </a>
-            <a href="/AdminLogin" class="mr-5 hover:text-red-700 duration-500">
-              Second Link
-            </a>
-            <a href="" class="mr-5 hover:text-red-700 duration-500">
-              Third Link
-            </a>
-            <a href="" class="mr-5 hover:text-red-700 duration-500">
-              Fourth Link
-            </a>
+            
           </nav>
 
           <a href="/Login">

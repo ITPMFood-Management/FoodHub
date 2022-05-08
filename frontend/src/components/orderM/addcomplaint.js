@@ -2,8 +2,7 @@ import React,{useState} from "react"
 import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
 import Logo2 from "../../img/Logo-2.png"
-import {  toast } from 'react-toastify';
-//import Swal from "sweetalert2";
+import {  toast } from 'react-toastify';import Swal from "sweetalert2";
 
 
 export default function AddComplaint(){
@@ -32,10 +31,18 @@ export default function AddComplaint(){
         "http://localhost:8070/complaints/create",value,
         config
       );
-      toast("Success! Added 😘");
+      //toast("Success! Added 😘");
       setCtype("");
       setDescription("");
       setEmail("");
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Complaint Added Successfully',
+        showConfirmButton: false,
+        timer: 2500
+      })
 
       
     } catch (error) {
@@ -43,13 +50,7 @@ export default function AddComplaint(){
       setTimeout(() => {}, 5000); //5s
     }
   } 
-  //  Swal.fire({
-  //   position: 'top-end',
-  //   icon: 'success',
-  //   title: 'Complaint added',
-  //   showConfirmButton: false,
-  //   timer: 1500
-  // })
+   
 
   
 
@@ -70,7 +71,7 @@ return(
       <a href="/addorder" class="mr-5 hover:text-red-700 duration-500 ">Add Order</a>
       <a href="/orderlist" class="mr-5 hover:text-red-700 duration-500">Order List</a>
       <a href="/addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
+
     </nav>
 
    <a href="/signin"> <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">Log Out

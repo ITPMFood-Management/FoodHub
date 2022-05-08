@@ -3,7 +3,7 @@ import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 import Addcustomer from "./components/customerM/addcustomer";
 import Customerlist from "./components/customerM/customerlist";
-import Editcustomer from "./components/customerM/editcustomer";
+import Editcustomer from "./components/customerM/Editcustomer";
 import Foodhub from "./components/foodhub";
 import Footer from "./footer";
 import Home from "./Home";
@@ -18,7 +18,8 @@ import Register from "./components/register/Register";
 import AddOrder from "./components/orderM/addorder"
 import OrderList from "./components/orderM/orderlist"
 import AddComplaint from "./components/orderM/addcomplaint"
-import UpdateOrder from "./components/orderM/updateorder";
+import Updateorder from "./components/orderM/updateorder";
+
 
 import FoodList from "./components/FoodM/foodlist";
 
@@ -58,13 +59,13 @@ const App = () => {
           />
        
         <Route path="/customerlist" element={<Customerlist/>}/>
-        <Route path="/Editcustomer" element={<Editcustomer/>}/>
+        <Route path="/editcustomer" element={<Editcustomer/>}/> 
 
 
         <Route path="/addorder"     element={<AddOrder/>}/>
         <Route path="/orderlist"   element={<OrderList/>}/>
         <Route path="/addcomplaint"   element={<AddComplaint/>}/>
-        <Route path="/updateorder"   element={<UpdateOrder/>}/>
+        <Route path="/updateorder/:id"   element={<Updateorder/>}/>
 
 
         

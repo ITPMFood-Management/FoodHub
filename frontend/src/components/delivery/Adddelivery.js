@@ -3,18 +3,37 @@ import "./delivery.css"
 import axios from 'axios';
 import Logo2 from '../../img/Logo-2.png'
 import Swal from "sweetalert2";
+import Modal from 'react-modal';
+
+
+
 
 const Adddelivery = () => {
+
   const[name,setName]=useState('')
+  const[validateName,setValidateName]=useState('')
   const[age,setAge]=useState('')
   const[workdate,setworkDate]=useState('')
   const[birthday,setbirthDate]=useState('')
   const[address,setAddress]=useState('')
   const[phonenumber,setPhonenumber]=useState('')
   const[email,setEmail]=useState('')
+  const [modalIsOpen, setIsOpen] =useState(false);
 
-
+//validation
+ const validate=()=>{
+   let namevalidate="";
+    if(!name){
+      namevalidate="Name cannot be blank"
+      setValidateName(namevalidate)
+      return false
+    }
+    else{
+      return true
+    }
+ }
   const submit=()=>{
+    
     const data={
       name: name,
       address:address,
@@ -32,10 +51,12 @@ const Adddelivery = () => {
     icon: 'success',
     title: 'Added succesfully',
     showConfirmButton: false,
-    timer: 1500,
+    timer: 2500,
   })
-  
+
   }
+  
+
   const Clear= ()=>{
     setName("")
     setAge("")
@@ -47,6 +68,12 @@ const Adddelivery = () => {
     
 
   }
+  const openModal=()=> {
+    const isValidate =validate();
+    if(isValidate){
+    setIsOpen(true);}}
+  const closeModal=()=> {setIsOpen(false);}
+  const customStyles = {content: {top: '50%',left: '50%',right: 'auto',bottom: 'auto',marginRight: '-50%',transform: 'translate(-50%, -50%)',},};
    
       
     
@@ -88,30 +115,32 @@ const Adddelivery = () => {
 
       <p class="text-2xl flex justify-center">Create Delivery</p>
       <div class=" flex justify-center">
-          <form className="w-11/12 p-12 bg-cyan-200 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20">
+          <form className="w-11/12 p-12 bg-cyan-200 sm:w-8/12 md:w-1/2 lg:w-5/12 mt-20" >
         <div className="">
 
         <div class="">Name
-  <input value={name} onChange={(e)=>setName(e.target.value)}  required="required" title="Name cannot contain any numbers or special characters"  type="text" name="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
- 
+  <input value={name} onChange={(e)=>setName(e.target.value)}  required="required" title="Name cannot contain any numbers or special characters"  type="text" name="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter your Name "  />
+ <div style={{color:'red',fontSize:12}}>
+   {validateName}
+ </div>
 </div>
 
 
 
           <br /> 
           <div class="">Age
-  <input  value={age} required pattern="[1-9]{1,3}" title="Age cannot contain any letters or special characters  and Age > 0"  type="text" name="age" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <input  value={age} onChange={(e)=>setAge(e.target.value)} required pattern="[1-9]{1,3}" title="Age cannot contain any letters or special characters  and Age > 0"  type="text" name="age" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" Enter your Age"  />
   <label for="age" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
 </div>
              <br /> 
              <div class="">Workdate
-  <input   value={workdate}  onChange={(e)=>setworkDate(e.target.value)} required pattern="[A-Za-z]+" title="Gender cannot contain any numbers or special characters"  type="text" name="gender" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <input   value={workdate}  onChange={(e)=>setworkDate(e.target.value)} required pattern="[A-Za-z]+" title="Gender cannot contain any numbers or special characters"  type="text" name="gender" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter your work Date "  />
   <label for="gender" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
 </div>
               <br />
 
               <div class="">Birth Day
-  <input   value={birthday}  onChange={(e)=>setbirthDate(e.target.value)} required  type="text" name="address" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <input   value={birthday}  onChange={(e)=>setbirthDate(e.target.value)} required  type="text" name="address" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter your Birth day "  />
   <label for="address" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
 </div>
 
@@ -119,19 +148,19 @@ const Adddelivery = () => {
 
             <br />  
             <div class="">Address
-  <input   value={address}  onChange={(e)=>setAddress(e.target.value)} required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"  type="text" name="phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <input   value={address}  onChange={(e)=>setAddress(e.target.value)} required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"  type="text" name="phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter your Workdate "  />
   <label for="phone" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
 </div>
 
 
               <br />  
               <div class="">Phone Number
-  <input   value={phonenumber}   onChange={(e)=>setPhonenumber(e.target.value)} required pattern = "[0-9a-zA-Z%&$@.]+@[a-zA-Z]+\.+[a-zA-Z]{2,3}"   type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <input   value={phonenumber}   onChange={(e)=>setPhonenumber(e.target.value)} required pattern = "[0-9a-zA-Z%&$@.]+@[a-zA-Z]+\.+[a-zA-Z]{2,3}"   type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter your phone number "  />
   <label for="email" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
 </div>
 
 <div class="">Email Address
-  <input   value={email}   onChange={(e)=>setEmail(e.target.value)} required pattern = "[0-9a-zA-Z%&$@.]+@[a-zA-Z]+\.+[a-zA-Z]{2,3}"   type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <input   value={email}   onChange={(e)=>setEmail(e.target.value)} required pattern = "[0-9a-zA-Z%&$@.]+@[a-zA-Z]+\.+[a-zA-Z]{2,3}"   type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter your Email "  />
   <label for="email" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
 </div>
 
@@ -139,21 +168,39 @@ const Adddelivery = () => {
 
         </div>
 
-        <a href='/viewDelivery'>
-        <button onClick={submit} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+        
+        <button onClick={openModal} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
        
-                                              Submit
-                                          </button>  </a>
+           Submit
+           </button>  
 
-                                          <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center ml-5">
+         <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center ml-5">
        
        Clear
    </button>  
+
+  
+
+ 
         
     
-    </form></div></div>
+    </form>  </div> 
+    <Modal
+    isOpen={modalIsOpen}
+    // onAfterOpen={afterOpenModal}
+    // onRequestClose={closeModal}
+    style={customStyles}
+    contentLabel="Example Modal"><p> Do you want submit?</p>
+    <a href='/viewDelivery'>
+    <button onClick={submit} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center ml-5">
+       
+       Yes
+   </button> </a>
+   <button onClick={closeModal} type="button" data-modal-toggle="delete-user-modal" class="mt-5 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center ml-5">
+       
+       No
+   </button> </Modal></div>
     )
       
     }
   export default Adddelivery;
-  

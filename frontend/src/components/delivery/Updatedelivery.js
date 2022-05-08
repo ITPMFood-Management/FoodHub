@@ -2,6 +2,13 @@ import React,{useEffect,useState} from "react";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
+import Swal from "sweetalert2";
+
+
+
+
+
+
 
 
 
@@ -60,6 +67,13 @@ const Updatedelivery = (props) => {
  axios.put(`http://localhost:8070/delivery/update/${params.id}`, data).then(res=>{
     console.log(res);
   }) 
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Update succesfully',
+    showConfirmButton: false,
+    timer: 5300,
+  })
   }
   const Clear= ()=>{
     setName("")

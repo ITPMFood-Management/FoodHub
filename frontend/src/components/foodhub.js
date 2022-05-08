@@ -11,6 +11,19 @@ import food7 from "../img/f7.png";
 
 function Foodhub() {
   return (
+
+    <><header class="text-gray-400  body-font  ">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">
+    <a href="/home" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+      <img src={Logo2} className="w-12" />
+      <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
+    </a>
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
+      {/* <a href="" class="mr-5 hover:text-red-700 duration-500 ">First Link</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Second Link</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a> */}
+    </nav>
     <>
       <header class="text-gray-400  body-font  ">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">

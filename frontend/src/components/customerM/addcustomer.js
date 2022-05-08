@@ -113,7 +113,7 @@ function refreshPage() {
       <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Account List</a>
       <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Complaints</a>
     </nav>
-   <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div> 
+   {/* <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div>  */}
 
   
 

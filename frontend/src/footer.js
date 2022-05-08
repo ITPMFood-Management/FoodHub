@@ -71,7 +71,8 @@ const Footer = () => {
           <h2 class="title-font font-medium text-white  tracking-widest text-sm mb-3">Food HUB</h2>
           <nav class="list-none mb-10">
             <li>
-              <a class="text-gray-600 hover:text-white">SIGN IN/ REGISTER</a>
+              <a href="../Login" class="text-gray-600 hover:text-white">SIGN IN/ REGISTER</a>
+              
             </li>
             
           </nav>

@@ -45,6 +45,10 @@ function Foodhub() {
                               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">PIZZA</h3>
                               <h2 class="text-white title-font text-lg font-medium">The Catalyzer</h2>
                               <p class="mt-1">RS.550.00</p>
+                              <a href=""></a>
+                              <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
+                                    More...
+                                </button> 
                           </div>
                       </div>
                       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
@@ -55,6 +59,10 @@ function Foodhub() {
                               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CHICKEN BURGER</h3>
                               <h2 class="text-white title-font text-lg font-medium">Shooting Stars</h2>
                               <p class="mt-1">RS.675.00</p>
+                              <a href=""></a>
+                              <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
+                                    More...
+                                </button> 
                           </div>
                       </div>
                       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
@@ -65,6 +73,10 @@ function Foodhub() {
                               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">ONION RINGS</h3>
                               <h2 class="text-white title-font text-lg font-medium">Neptune</h2>
                               <p class="mt-1">RS.250.00</p>
+                              <a href=""></a>
+                              <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
+                                    More...
+                                </button> 
                           </div>
                       </div>
                       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
@@ -75,6 +87,10 @@ function Foodhub() {
                               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">BIRIYANI</h3>
                               <h2 class="text-white title-font text-lg font-medium">The 400 Blows</h2>
                               <p class="mt-1">RS.850.00</p>
+                              <a href=""></a>
+                              <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
+                                    More...
+                                </button> 
                           </div>
                       </div>
                       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
@@ -85,6 +101,10 @@ function Foodhub() {
                               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CHOCOLATE MOUSSE</h3>
                               <h2 class="text-white title-font text-lg font-medium">The Catalyzer</h2>
                               <p class="mt-1">RS.350.00</p>
+                              <a href=""></a>
+                              <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
+                                    More...
+                                </button> 
                           </div>
                       </div>
                       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
@@ -95,6 +115,10 @@ function Foodhub() {
                               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CHOCOLATE CAKE</h3>
                               <h2 class="text-white title-font text-lg font-medium">Shooting Stars</h2>
                               <p class="mt-1">RS.275.00</p>
+                              <a href=""></a>
+                              <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
+                                    More...
+                                </button> 
                           </div>
                       </div>
                       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
@@ -105,6 +129,10 @@ function Foodhub() {
                               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">PAN CAKE</h3>
                               <h2 class="text-white title-font text-lg font-medium">Neptune</h2>
                               <p class="mt-1">RS.150.00</p>
+                              <a href=""></a>
+                              <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
+                                    More...
+                                </button> 
                           </div>
                       </div>
                       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
@@ -115,6 +143,10 @@ function Foodhub() {
                               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CUP CAKE</h3>
                               <h2 class="text-white title-font text-lg font-medium">The 400 Blows</h2>
                               <p class="mt-1">RS.120.00</p>
+                              <a href=""></a>
+                              <button  className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-3 rounded" type="submit">
+                                    More...
+                                </button> 
                           </div>
                       </div>
                   </div>

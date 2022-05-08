@@ -18,6 +18,8 @@ const Addcustomer = () => {
   const [isError, setIsError] = useState(false);
   const [listOfUsers, setListOfUsers] = useState([]);
 
+
+
   const [newUser, setNewUser] = useState({
     name: "",
     age: "",
@@ -135,12 +137,12 @@ const Addcustomer = () => {
               href="/customerlist"
               class="mr-5 hover:text-red-700 duration-500"
             >
-              Complaints
+          
             </a>
           </nav>
           {/* <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div>  */}
 
-          <a href="/signin">
+          <a href="/home">
             {" "}
             <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">
               Log Out
@@ -344,6 +346,7 @@ const Addcustomer = () => {
                 <ToastContainer style={{ marginTop: "50px" }} />
               </div>
             </form>
+            
             <br />
             <br />
             <br />

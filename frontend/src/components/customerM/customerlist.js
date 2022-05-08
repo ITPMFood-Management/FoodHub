@@ -105,7 +105,7 @@ function Customerlist() {
                   href="/customerlist"
                   class="mr-5 hover:text-red-700 duration-500"
                 >
-                  Complaints
+            
                 </a>
               </nav>
 
@@ -146,7 +146,7 @@ function Customerlist() {
                 </button>
               </div>
 
-              <a href="/signin">
+              <a href="/home">
                 {" "}
                 <button class="inline-flex items-center bg-white border-solid border-2 border-black py-1 px-3 focus:outline-none hover:text-red-700 rounded text-base mt-4 md:mt-0 mr-7">
                   Log Out

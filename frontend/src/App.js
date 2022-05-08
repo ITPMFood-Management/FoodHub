@@ -19,15 +19,12 @@ import AddOrder from "./components/orderM/addorder"
 import OrderList from "./components/orderM/orderlist"
 import AddComplaint from "./components/orderM/addcomplaint"
 import Updateorder from "./components/orderM/updateorder";
-
-
 import FoodList from "./components/FoodM/foodlist";
-
 import Updatefood from "./components/FoodM/Updatefood";
 import Orders from "./components/FoodM/orders";
 import PrivateRoute from './components/routes/PrivateRoute'
-
 import Userpage from './components/Userpage/Userpage'
+import AdminLogin from "./components/AdminLogin/Login";
 
 const App = () => {
     return (  
@@ -45,8 +42,9 @@ const App = () => {
         <Route path="/Updatedelivery/:id" element={<Updatedelivery/>} />
         <Route path="/Viewdelivery" element={<Viewdelivery/>} />
       
-  
-
+     
+        <Route path="/AdminLogin" element={<AdminLogin/>} />
+       
         <Route path="/addcustomer" element={<Addcustomer/>} />
 
         <Route
@@ -57,6 +55,15 @@ const App = () => {
               </PrivateRoute>
             }
           />
+           <Route
+            path="/dashboard/:name/"
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            }
+          />
+          
        
         <Route path="/customerlist" element={<Customerlist/>}/>
         <Route path="/updatecustomer/:id" element={<Editcustomer/>}/>
@@ -76,6 +83,8 @@ const App = () => {
        <Route path="/orders"           element={<Orders/>}/>
      
 
+
+   
         </Routes>
         <br></br>
         <br></br>

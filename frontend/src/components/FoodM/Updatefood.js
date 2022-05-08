@@ -4,6 +4,8 @@ import Logo2 from "../../img/Logo-2.png"
 // import { use } from "express/lib/router";
 import { useParams } from "react-router-dom";
 import moment from 'moment';
+import Swal from "sweetalert2";
+
 
 const Updatefood = (props) => {
 
@@ -81,13 +83,13 @@ const Updatefood = (props) => {
      alert(err)
    })
  
-  // //  Swal.fire({
-  // //   position: 'top-end',
-  // //   icon: 'success',
-  // //   title: 'food added',
-  // //   showConfirmButton: false,
-  // //   timer: 1500
-  // })
+   Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'food added',
+    showConfirmButton: false,
+    timer: 8000
+  })
   
 }
 
@@ -299,7 +301,7 @@ const Updatefood = (props) => {
                    }} 
            />
            {console.log("Image",Image)}
-           {Image!=""  && <img class="h-20 w-20 " src={"./../../../public/foodima/"+Image}/>}
+           {Image!=""  && <img class="h-20 w-20 " src={"./../../../../frontend/public/foodima"+Image}/>}
          </div>
        </div> 
        

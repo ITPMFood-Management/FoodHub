@@ -57,7 +57,7 @@ const Updateorder = (props) => {
       icon: 'success',
       title: 'Order Updated Successfully',
       showConfirmButton: false,
-      timer: 2500
+      timer: 3500
     })
   
   }

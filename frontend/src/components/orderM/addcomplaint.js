@@ -137,10 +137,11 @@ return(
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
        Email:
       </label>
-      <input type="text" 
+      <input type="email" 
       id="grid-email" 
       name="email"
-      required="required"
+      // required="required"
+      required pattern = "[0-9a-zA-Z%&$@.]+@[a-zA-Z]+\.+[a-zA-Z]{2,3}" 
       value={email}
       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-blue-700"  
       placeholder="Enter the Email" 

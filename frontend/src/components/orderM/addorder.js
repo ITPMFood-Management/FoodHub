@@ -135,8 +135,10 @@ return(
    name="customername" 
    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
    placeholder="Enter the Customer Name"
-   required
+  //  required
    value={customername}
+   required pattern="[A-Za-z]+"
+   title="Name cannot contain any numbers or special characters"
    onChange={(e)=>{
     setCustomername(e.target.value); 
    }} 
@@ -171,7 +173,7 @@ return(
 
   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
   placeholder="Enter the Contact Number" 
-  // required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"
+  //required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"
   value={phoneNumber}
   onChange={(e)=>{
   setPhoneNumber(e.target.value); 
@@ -191,7 +193,7 @@ return(
   
    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
    placeholder="Enter the Address" 
-   required
+  //  required
    value={address}
    onChange={(e)=>{
    setAddress(e.target.value); 

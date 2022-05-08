@@ -61,10 +61,17 @@ const Adddelivery = () => {
       <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
+
       <a href="/addDelivery" class="mr-5 hover:text-red-700 duration-500 ">Add Delivery Details</a>
       <a href="/Viewdelivery" class="mr-5 hover:text-red-700 duration-500">View delivery details</a>
       <a href="/Updatedelivery" class="mr-5 hover:text-red-700 duration-500">Update delivery details</a>
       {/* <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a> */}
+
+      <a href="/addcustomer" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
+      <a href="/Viewdelivery" class="mr-5 hover:text-red-700 duration-500">Account List</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
+      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
+
     </nav>
    <div className=""> {/*  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))} */}</div> 
 
@@ -93,7 +100,7 @@ const Adddelivery = () => {
 
           <br /> 
           <div class="">Age
-  <input  value={age}  onChange={(e)=>setAge(e.target.value)} required pattern="[1-9]{1,3}" title="Age cannot contain any letters or special characters  and Age > 0"  type="text" name="age" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+  <input  value={age} required pattern="[1-9]{1,3}" title="Age cannot contain any letters or special characters  and Age > 0"  type="text" name="age" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
   <label for="age" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
 </div>
              <br /> 

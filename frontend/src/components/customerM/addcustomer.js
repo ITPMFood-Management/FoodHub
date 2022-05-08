@@ -2,24 +2,29 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import Logo2 from "../../img/Logo-2.png"
-import customer from "../../img/customer.png"
+import { Modal, Button } from 'antd';
+
 
 
 
 
 
 const Addcustomer = () =>{
+  const [visible, setVisible] = useState(false);
     
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [photo, setPhoto] = useState("");
   const [loading, setLoading] = useState(false); //additional 
   const [isError, setIsError] = useState(false);
   const [listOfUsers, setListOfUsers] = useState([]);
 
-    useEffect((id) => {
-        axios.get(`http://localhost:8070/customer/user/${id}`).then((response) => {
-          setListOfUsers(response.data);
-        });
-      }, []);
 
+   
 
   const [newUser, setNewUser] = useState(
       {
@@ -67,7 +72,10 @@ const Addcustomer = () =>{
   }
 
   const handleChange = (e) => {
-      setNewUser({...newUser, [e.target.name]: e.target.value});
+      setNewUser({...newUser, [e.target.name]: e.target.value});  
+      
+     
+      
   }
 
   const handlePhoto = (e) => {
@@ -90,23 +98,33 @@ const getDataFromAPI = () => {
     setMyOptions(myOptions)
   })
 }
-
+const Clear= ()=>{
+  setName("")
+  setAge("")
+  setGender("")
+  setAddress("")
+  setPhone("")
+  setPhoto("")
+  setEmail("")
   
+
+}
+
 
 
   return (
-    <div >
-      <header class="text-gray-400  body-font  fixed " > 
+    
+    <>
+     <header class="text-gray-400  body-font  fixed " > 
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center fixed bg-white border-2 border-slate-100">
     <a href="/home" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
       <img src={Logo2} className="w-12" />
       <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-      <a href="/addcustomer" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
+      <a href="/addcustomer" class="mr-5 hover:text-red-700 duration-500 ">Dashboard</a>
       <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Account List</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
+      <a href="/customerlist" class="mr-5 hover:text-red-700 duration-500">Complaints</a>
     </nav>
    <div className="">  {listOfUsers.map((user) => ( <img class="h-10 w-10 rounded-full" src={"images/" + user.photo}></img>))}</div> 
 
@@ -120,13 +138,27 @@ const getDataFromAPI = () => {
    
   </div>
 </header>
-<img src={customer} className="bg-gradient-to-bl md:h-full md:w-full absolute mt-20" />
+      <Button type="primary" className='mt-32 ml-5' onClick={() => setVisible(true)}>
+        Add Customer
+      </Button>
+      <Modal className='mt-52'
+        title="Add New Customer"
+      
+        visible={visible}
+        onOk={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+        width={800}
+      >
+        <div >
+     
+
         <div className="grid min-h-screen place-items-center "  ><br/><br/>
-            <form onSubmit={handleSubmit} encType='multipart/form-data'  className="w-11/12 p-12  sm:w-8/12 md:w-1/2 lg:w-5/12 mt-36 absolute"><br />
+            <form onSubmit={handleSubmit} encType='multipart/form-data'  className=" w-96"><br />
+            
             <div className="">
 
             <div class="">Name
-      <input value={newUser.name} onChange={handleChange} required pattern="[A-Za-z]+" title="Name cannot contain any numbers or special characters"  type="text" name="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+      <input value={newUser.name} onChange={handleChange}  title="Name cannot contain any numbers or special characters"  type="text" name="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
      
   </div>
 
@@ -185,8 +217,12 @@ const getDataFromAPI = () => {
             </div>
 
             <br/>
+            
             <div style={{textAlign:"center"}}>
-                     {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
+             <button onClick={Clear} type="button" data-modal-toggle="delete-user-modal" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+        Clear
+   </button>  
+                     {isError && <small className="mt-3 d-inline-block text-danger"><br/>Something went wrong. Please try again later.</small>}
                      {/*decision*/}
                      <button
                         type="submit"
@@ -197,12 +233,17 @@ const getDataFromAPI = () => {
                      <ToastContainer style={{marginTop:"50px"}}/>
                     
             </div>
+            
         </form>
         <br/>
         <br/><br/><br/><br/><br/><br/>
         </div>
         </div>
-  )
-}
+      </Modal>
+    </>
+  );
+};
+   
+
 
 export default Addcustomer

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import background from '../../img/Order.png';
 import Logo2 from "../../img/Logo-2.png"
+import Swal from "sweetalert2";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -28,15 +29,19 @@ export default function AddOrder(){
       },
     };
 
-  
+    const value ={customername, phoneNumber, address, category, itemnumber, quantity}
+    if(value.phoneNumber.length<10){
+      alert("Phone Number must be minimum 10 characters... or Enter a valid contact Number")
+      e.preventDefault();
+    }
+    else{
     try {
       //exception handling
       var { data } = await axios.post(
-        "http://localhost:8070/orders/create",
-        { customername, phoneNumber, address, category, itemnumber, quantity  },
+        "http://localhost:8070/orders/create",value,
         config
       );
-      toast("Success! Added 😘");
+      //toast("Success! Added 😘");
       setCustomername("");
       setPhoneNumber("");
       setAddress("");
@@ -47,7 +52,28 @@ export default function AddOrder(){
       toast(`Error! ${error?.response?.data?.error}`);
       setTimeout(() => {}, 5000); //5s
     }
+  }
+  
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Order Added Successfully',
+    showConfirmButton: false,
+    timer: 2500
+  })
+
   };
+
+  const Clear= ()=>{
+
+      setCustomername("");
+      setPhoneNumber("");
+      setAddress("");
+      setCategory("");
+      setItemnumber("");
+      setQuantity("");
+  
+  }
   
   
 
@@ -64,9 +90,8 @@ return(
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
       <a href="/addorder" class="mr-5 hover:text-red-700 duration-500 ">Add Order</a>
       <a href="/orderlist" class="mr-5 hover:text-red-700 duration-500">Order List</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
-    </nav>
+      <a href="/addcomplaint" class="mr-5 hover:text-red-700 duration-500">Add Complaints</a>
+</nav>
    
   
 
@@ -125,11 +150,28 @@ return(
   </label>
   <input type="number" 
  
+//  rules={[
+
+//   { required: true, message: "Please input your Phone Number!" },
+  
+//   {
+  
+//   min: 10,
+  
+//   message: "Phone Number must be minimum 10 characters.",
+  
+//   },
+  
+//   {max: 10 },
+  
+//   ]}
+
   id="grid-ophone" 
   name="phoneNumber"  
+
   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  
   placeholder="Enter the Contact Number" 
-  required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"
+  // required pattern = "[0-9]{10}" title="Phone cannot contain any letters or special characters and cannot exceeded 10 digits"
   value={phoneNumber}
   onChange={(e)=>{
   setPhoneNumber(e.target.value); 
@@ -236,6 +278,11 @@ return(
   <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-4 rounded" type="submit">
     Submit
   </button>
+
+  <button onClick={Clear} className="btn shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mt-4 rounded md:items-left" type="submit">
+    Clear
+  </button>
+
 </div>
 </div>
 

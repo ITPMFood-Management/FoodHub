@@ -4,6 +4,9 @@ import axios from 'axios';
 import Logo2 from "../../img/Logo-2.png"
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
 
 
 
@@ -59,6 +62,21 @@ function Customerlist() {
             setFilteredResults(listOfUsers)
         }
     }
+     //genarate pdf
+     const genPDF = () => {
+      const doc = new jsPDF({
+          orientation: "landscape",
+         
+        });
+      doc.setFontSize(20);
+      doc.text("Customer List", 10,10);
+  
+      doc.autoTable({
+        html: '#content'
+      })
+      doc.save('Customers.pdf');
+    }  
+
     
     const [loader, setLoader] = useState(false);
 
@@ -122,7 +140,12 @@ function Customerlist() {
          
                       <div class="shadow overflow-hidden">
                       <div className="text-3xl text-black mt-28 text-center mb-6"> All Customers</div>
-                          <table class="table-fixed min-w-full divide-y divide-gray-200 border-2 border-y border-black" >
+                      <button onClick={genPDF} type="button" data-modal-toggle="delete-user-modal" class="  py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                              
+                                              Download Customer Details 
+                                                             </button>
+                    
+                          <table class="table-fixed min-w-full divide-y divide-gray-200 border-2 border-y border-black" id="content" >
                               <thead class="bg-gray-100">
                                   <tr>
                                       <th scope="col" class="p-4">
@@ -224,7 +247,8 @@ function Customerlist() {
 
 )))} 
 </tbody>
-                          </table>
+                          </table><br />
+                         
                       </div>
                   </div>
               </div>

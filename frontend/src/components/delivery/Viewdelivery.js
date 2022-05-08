@@ -73,10 +73,10 @@
       <span class="ml-3 text-xl text-red-700">FOOD HUB</span>
     </a>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-      <a href="/addDelivery" class="mr-5 hover:text-red-700 duration-500 ">Create Account</a>
-      <a href="/Viewdelivery" class="mr-5 hover:text-red-700 duration-500">Account List</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Third Link</a>
-      <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a>
+      <a href="/addDelivery" class="mr-5 hover:text-red-700 duration-500 ">Add Delivery Details</a>
+      <a href="/Viewdelivery" class="mr-5 hover:text-red-700 duration-500">View delivery details</a>
+      <a href="/Updatedelivery/" class="mr-5 hover:text-red-700 duration-500">Update delivery details</a>
+      {/* <a href="" class="mr-5 hover:text-red-700 duration-500">Fourth Link</a> */}
     </nav>
   
 

@@ -163,10 +163,7 @@ function Customerlist() {
     <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.name}</td>
     <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.email}</td>
     <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.phone}</td>
-    <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.age}</td>
-    <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.gender}</td>
-    <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.address}</td>
-  <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">{user.photo}</td>
+
 
    
     <td class="p-4 whitespace-nowrap space-x-2 ">

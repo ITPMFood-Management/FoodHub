@@ -59,7 +59,8 @@ const App = () => {
           />
        
         <Route path="/customerlist" element={<Customerlist/>}/>
-        <Route path="/editcustomer" element={<Editcustomer/>}/> 
+        <Route path="/updatecustomer/:id" element={<Editcustomer/>}/>
+ 
 
 
         <Route path="/addorder"     element={<AddOrder/>}/>

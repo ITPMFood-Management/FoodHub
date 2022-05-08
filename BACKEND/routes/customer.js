@@ -60,7 +60,7 @@ router.route("/").get((req , res)=>{ //route for display all
 
 });
 
-router.route("/update/:id").put(upload.single('photo') , async (req , res)=>{  //update data
+router.route("/update/:id").put(async (req , res)=>{  //update data
     let CustomerID = req.params.id;
     const name = req.body.name;
     const age = Number(req.body.age);
@@ -68,10 +68,10 @@ router.route("/update/:id").put(upload.single('photo') , async (req , res)=>{  /
     const address = req.body.address;
     const phone = Number(req.body.phone);
     const email = req.body.email;
-    const photo = req.file.filename;
 
 
-    const updateCustomer = {name , age , gender , address , photo , phone , email};
+
+    const updateCustomer = {name , age , gender , address  , phone , email};
 
     await Customer.findByIdAndUpdate(CustomerID , updateCustomer)
     .then(()=>{
@@ -96,19 +96,13 @@ router.route("/delete/:id").delete(async (req , res)=>{  //delete data
 });
 
 
-router.route("/user/:id").get(async (req , res)=>{  //get specific data
-    let CustomerID = req.params.id;
+router.route("/get/:id").get(async (req, res) => {
+    const { id } = req.params;
 
-    await Customer.findById(CustomerID)
-    .then(()=>{
-        res.status(200).send({status : "ok"});
-
-    }).catch((err)=>{
-        console.log(err);
-        res.status(500).send({status : "Error with deleting data" , error : err.message});
-    });
+    await Customer.findById(id)
+    .then((customer) => res.json(customer))
+    .catch((error) => res.status(500).json({success: false, error:error}));
 });
-
 
 router.route("/get/:name").get(async (req , res)=>{  //search data
     let name = req.params.name; 
